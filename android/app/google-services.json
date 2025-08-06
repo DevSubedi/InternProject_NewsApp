@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "678617951216",
+    "project_id": "internship-project-newsapp",
+    "storage_bucket": "internship-project-newsapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678617951216:android:e3420dd6539f1804298b35",
+        "android_client_info": {
+          "package_name": "com.example.news_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZWUVMuVnog4d9_Twojzkafea3HHexc0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
