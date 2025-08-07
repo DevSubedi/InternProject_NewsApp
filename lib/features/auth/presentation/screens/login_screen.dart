@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:news_app/features/auth/presentation/widgets/login_screen_part.dart';
 import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -9,28 +12,20 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(24.h),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextWidget(word: 'Hello', size: 48.h, weight: FontWeight.bold),
-            5.verticalSpace,
-            TextWidget(
-              word: 'Again!',
-              size: 48.h,
-              textColor: Colors.blue,
-              weight: FontWeight.bold,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: 24.h,
+              left: 24.h,
+              right: 24.h,
+              bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
-            5.verticalSpace,
-            TextWidget(
-              word: "Welcome back you've \n been missed",
-              size: 20,
-              textColor: Color(0xFF4E4B66),
+            child: BlocProvider(
+              create: (context) => LoginCubit(),
+              child: LoginScreenPart(),
             ),
-            48.verticalSpace,
-          ],
+          ),
         ),
       ),
     );

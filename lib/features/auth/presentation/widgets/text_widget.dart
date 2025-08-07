@@ -17,7 +17,11 @@ class TextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       word,
-      style: TextStyle(color: textColor ?? Colors.black, fontSize: size ?? 14),
+      style: TextStyle(
+        color: textColor ?? Colors.black,
+        fontSize: size ?? 14,
+        fontWeight: weight ?? FontWeight.normal,
+      ),
     );
   }
 }
