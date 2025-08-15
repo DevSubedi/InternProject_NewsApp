@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/routing/app_router.dart';
 import 'package:news_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:news_app/core/di/service_locator.dart';
+import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
 import 'package:news_app/features/localization/presentation/bloc/localization_bloc.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,7 +17,10 @@ Future<void> main() async {
 
   runApp(
     MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => LocalizationBloc())],
+      providers: [
+        BlocProvider(create: (context) => LocalizationBloc()),
+        BlocProvider(create: (context) => NewsBloc()..add(FetchAllNewsEvent())),
+      ],
       child: MyApp(),
     ),
   );

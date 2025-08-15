@@ -1,28 +1,26 @@
 {
     "@@locale":  "en",
-    "name": "Name",
-    "settings": "Settings",
-    "shop" : "Shop",
-    "cart" : "Cart",
-    "exit" : "Exit",
-    "account" : "Account",
-    "darkmode" : "Dark Mode",
-    "language" : "Language",
-    "notification" : "Notification",
-    "help": "Help",
-    "buy": "Buy",
-    "off" : "OFF",
-    "discout": "Discount",
-    "offer": "Offer",
-    "category" : "Category",
-    "addToCart" : "Add To Cart",
+    "username": "Username",
+    "password" : "Password",
+    "hello" : "Hello",
+    "again" : "Again!",
+    "changeLanguage" : "Change Language",
     "login" : "Login",
-    "userProfile" : "User Profile",
-    "nrs" : "NRs",
-    "logout" : "LogOut",
-    "email": "Email",
-    "phone": "Phone",
-    "gender" : "Gender",
-    "address" : "Address",
-    "company" : "Company"
+    "signup" : "Sign Up",
+    
+
+
+    "loginScreentext1" : "Welcome back you've \n been missed",
+    "loginScreentext2" : "or continue with",
+    "loginScreentext3" : "don't have an account? ",
+
+    
+    "trending" : "Trending",
+    "latest" : "latest",
+    "home" : "Home",
+    "explore" : "Explore",
+    "bookmark" : "Bookmark",
+    "profile" : "profile"
+
+
 }

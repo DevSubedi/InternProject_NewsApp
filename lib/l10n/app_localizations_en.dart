@@ -9,77 +9,50 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get name => 'Name';
+  String get username => 'Username';
 
   @override
-  String get settings => 'Settings';
+  String get password => 'Password';
 
   @override
-  String get shop => 'Shop';
+  String get hello => 'Hello';
 
   @override
-  String get cart => 'Cart';
+  String get again => 'Again!';
 
   @override
-  String get exit => 'Exit';
-
-  @override
-  String get account => 'Account';
-
-  @override
-  String get darkmode => 'Dark Mode';
-
-  @override
-  String get language => 'Language';
-
-  @override
-  String get notification => 'Notification';
-
-  @override
-  String get help => 'Help';
-
-  @override
-  String get buy => 'Buy';
-
-  @override
-  String get off => 'OFF';
-
-  @override
-  String get discout => 'Discount';
-
-  @override
-  String get offer => 'Offer';
-
-  @override
-  String get category => 'Category';
-
-  @override
-  String get addToCart => 'Add To Cart';
+  String get changeLanguage => 'Change Language';
 
   @override
   String get login => 'Login';
 
   @override
-  String get userProfile => 'User Profile';
+  String get signup => 'Sign Up';
 
   @override
-  String get nrs => 'NRs';
+  String get loginScreentext1 => 'Welcome back you\'ve \n been missed';
 
   @override
-  String get logout => 'LogOut';
+  String get loginScreentext2 => 'or continue with';
 
   @override
-  String get email => 'Email';
+  String get loginScreentext3 => 'don\'t have an account? ';
 
   @override
-  String get phone => 'Phone';
+  String get trending => 'Trending';
 
   @override
-  String get gender => 'Gender';
+  String get latest => 'latest';
 
   @override
-  String get address => 'Address';
+  String get home => 'Home';
 
   @override
-  String get company => 'Company';
+  String get explore => 'Explore';
+
+  @override
+  String get bookmark => 'Bookmark';
+
+  @override
+  String get profile => 'profile';
 }

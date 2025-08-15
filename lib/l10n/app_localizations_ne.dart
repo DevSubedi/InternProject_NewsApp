@@ -9,77 +9,50 @@ class AppLocalizationsNe extends AppLocalizations {
   AppLocalizationsNe([String locale = 'ne']) : super(locale);
 
   @override
-  String get name => 'नाम';
+  String get username => 'प्रयोगकर्ता नाम';
 
   @override
-  String get settings => 'सेटिङहरू';
+  String get password => 'पासवर्ड';
 
   @override
-  String get shop => 'दुकान';
+  String get hello => 'नमस्ते';
 
   @override
-  String get cart => 'कार्ट';
+  String get again => 'फेरि!';
 
   @override
-  String get exit => 'बाहिर निस्कनुहोस्';
+  String get changeLanguage => 'भाषा परिवर्तन गर्नुहोस्';
 
   @override
-  String get account => 'खाता';
+  String get login => 'लगइन';
 
   @override
-  String get darkmode => 'डार्क मोड';
+  String get signup => 'साइन अप';
 
   @override
-  String get language => 'भाषा';
+  String get loginScreentext1 => 'फेरि स्वागत छ, तपाईंलाई मिस गरिएको थियो';
 
   @override
-  String get notification => 'सूचना';
+  String get loginScreentext2 => 'वा यससँग जारी राख्नुहोस्';
 
   @override
-  String get help => 'मद्दत';
+  String get loginScreentext3 => 'खाता छैन?';
 
   @override
-  String get buy => 'किन्नुहोस्';
+  String get trending => 'प्रवृत्तिमा';
 
   @override
-  String get off => 'छूट';
+  String get latest => 'नवीनतम';
 
   @override
-  String get discout => 'छूट';
+  String get home => 'गृहपृष्ठ';
 
   @override
-  String get offer => 'अफर';
+  String get explore => 'अन्वेषण गर्नुहोस्';
 
   @override
-  String get category => 'कोटि';
+  String get bookmark => 'बुकमार्क';
 
   @override
-  String get addToCart => 'कार्टमा हाल्नुहोस्';
-
-  @override
-  String get login => 'Login';
-
-  @override
-  String get userProfile => 'प्रोफाइल';
-
-  @override
-  String get nrs => 'रु';
-
-  @override
-  String get logout => 'लगआउट';
-
-  @override
-  String get email => 'इमेल';
-
-  @override
-  String get phone => 'फोन';
-
-  @override
-  String get gender => 'लिङ्ग';
-
-  @override
-  String get address => 'ठेगाना';
-
-  @override
-  String get company => 'कम्पनी';
+  String get profile => 'प्रोफाइल';
 }

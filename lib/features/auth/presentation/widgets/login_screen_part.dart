@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,17 +5,20 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:news_app/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:news_app/features/auth/presentation/cubit/login_state.dart';
+import 'package:news_app/features/auth/presentation/widgets/login_change_language_widget.dart';
 import 'package:news_app/features/auth/presentation/widgets/login_checkBox_widget.dart';
-import 'package:news_app/features/auth/presentation/widgets/login_button.dart';
+import 'package:news_app/features/auth/presentation/widgets/login_button_widget.dart';
 import 'package:news_app/features/auth/presentation/widgets/login_button_with_icon.dart';
 import 'package:news_app/features/auth/presentation/widgets/login_textField.dart';
 import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/l10n/app_localizations.dart';
 
 class LoginScreenPart extends StatelessWidget {
   const LoginScreenPart({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10 = AppLocalizations.of(context)!;
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (prev, curr) =>
           prev.loginStatus != curr.loginStatus ||
@@ -41,7 +42,7 @@ class LoginScreenPart extends StatelessWidget {
             context.read<LoginCubit>().getPassword(value);
           }
 
-          return Container(
+          return SizedBox(
             width: 400.h,
             child: Form(
               child: Column(
@@ -49,19 +50,19 @@ class LoginScreenPart extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextWidget(
-                    word: 'Hello',
+                    word: l10.hello,
                     size: 48.h,
                     weight: FontWeight.bold,
                   ),
                   TextWidget(
-                    word: 'Again!',
+                    word: l10.again,
                     size: 48.h,
                     textColor: Color(0xFF1877F2),
                     weight: FontWeight.bold,
                   ),
                   5.verticalSpace,
                   TextWidget(
-                    word: "Welcome back you've \n been missed",
+                    word: l10.loginScreentext1,
                     size: 20,
                     textColor: Color(0xFF4E4B66),
                   ),
@@ -72,7 +73,7 @@ class LoginScreenPart extends StatelessWidget {
                       Row(
                         children: [
                           TextWidget(
-                            word: 'Username',
+                            word: l10.username,
                             textColor: Color(0xFF4E4B66),
                           ),
                           TextWidget(word: '*', textColor: Colors.red),
@@ -84,14 +85,14 @@ class LoginScreenPart extends StatelessWidget {
                         // onChanged: (value) =>
                         //     context.read<LoginCubit>().getEmail(value),
                         title: 'UserName',
-                        hintText: 'Enter Your Name',
+                        hintText: 'Enter Your ${l10.username}',
                         icon: false,
                       ),
                       16.verticalSpace,
                       Row(
                         children: [
                           TextWidget(
-                            word: 'Password',
+                            word: l10.password,
                             textColor: Color(0xFF4E4B66),
                           ),
                           TextWidget(word: '*', textColor: Colors.red),
@@ -109,17 +110,16 @@ class LoginScreenPart extends StatelessWidget {
                       ),
                       16.verticalSpace,
                       LoginButton(
-                        title: 'Login',
+                        title: l10.login,
 
                         buttonHeight: 50,
                         buttonWidth: 379,
                         onPressed: (ctx) {
-                          log('button Pressed');
                           context.read<LoginCubit>().loginPressed(ctx);
                         },
                       ),
                       16.verticalSpace,
-                      TextWidget(word: 'or continue with'),
+                      TextWidget(word: l10.loginScreentext2),
                       16.verticalSpace,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -135,15 +135,19 @@ class LoginScreenPart extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextWidget(word: "Don't have an account?"),
+                          TextWidget(word: l10.loginScreentext3),
                           TextButton(
                             onPressed: () {},
                             child: TextWidget(
-                              word: 'Sign up',
+                              word: l10.signup,
                               textColor: Color(0xFF1877F2),
                             ),
                           ),
                         ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [LoginChangeLanguageWidget()],
                       ),
                     ],
                   ),

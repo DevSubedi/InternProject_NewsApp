@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/core/routing/navigation_service.dart';
 import 'package:news_app/features/auth/presentation/cubit/login_state.dart';
-import 'package:news_app/features/home/home_screen.dart';
+
+import '../../../../core/routing/route_name.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const LoginState());
@@ -40,16 +42,15 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       log('Navigating to next page');
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
-      );
+
       emit(state.copyWith(loginStatus: 'Login Sucessful!'));
+      NavigationService.pushNamedReplacement(RouteName.home);
     } on FirebaseAuthException catch (e) {
       log('${e.message}');
       emit(state.copyWith(loginStatus: '${e.message} : Login Failed!'));
     } catch (e) {
       log('problem is here');
+      log('$e');
       emit(state.copyWith(loginStatus: 'Unexpected Error occured: '));
     }
   }

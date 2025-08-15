@@ -95,101 +95,35 @@ abstract class AppLocalizations {
     Locale('ne')
   ];
 
-  /// No description provided for @name.
+  /// No description provided for @username.
   ///
   /// In en, this message translates to:
-  /// **'Name'**
-  String get name;
+  /// **'Username'**
+  String get username;
 
-  /// No description provided for @settings.
+  /// No description provided for @password.
   ///
   /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings;
+  /// **'Password'**
+  String get password;
 
-  /// No description provided for @shop.
+  /// No description provided for @hello.
   ///
   /// In en, this message translates to:
-  /// **'Shop'**
-  String get shop;
+  /// **'Hello'**
+  String get hello;
 
-  /// No description provided for @cart.
+  /// No description provided for @again.
   ///
   /// In en, this message translates to:
-  /// **'Cart'**
-  String get cart;
+  /// **'Again!'**
+  String get again;
 
-  /// No description provided for @exit.
+  /// No description provided for @changeLanguage.
   ///
   /// In en, this message translates to:
-  /// **'Exit'**
-  String get exit;
-
-  /// No description provided for @account.
-  ///
-  /// In en, this message translates to:
-  /// **'Account'**
-  String get account;
-
-  /// No description provided for @darkmode.
-  ///
-  /// In en, this message translates to:
-  /// **'Dark Mode'**
-  String get darkmode;
-
-  /// No description provided for @language.
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
-  String get language;
-
-  /// No description provided for @notification.
-  ///
-  /// In en, this message translates to:
-  /// **'Notification'**
-  String get notification;
-
-  /// No description provided for @help.
-  ///
-  /// In en, this message translates to:
-  /// **'Help'**
-  String get help;
-
-  /// No description provided for @buy.
-  ///
-  /// In en, this message translates to:
-  /// **'Buy'**
-  String get buy;
-
-  /// No description provided for @off.
-  ///
-  /// In en, this message translates to:
-  /// **'OFF'**
-  String get off;
-
-  /// No description provided for @discout.
-  ///
-  /// In en, this message translates to:
-  /// **'Discount'**
-  String get discout;
-
-  /// No description provided for @offer.
-  ///
-  /// In en, this message translates to:
-  /// **'Offer'**
-  String get offer;
-
-  /// No description provided for @category.
-  ///
-  /// In en, this message translates to:
-  /// **'Category'**
-  String get category;
-
-  /// No description provided for @addToCart.
-  ///
-  /// In en, this message translates to:
-  /// **'Add To Cart'**
-  String get addToCart;
+  /// **'Change Language'**
+  String get changeLanguage;
 
   /// No description provided for @login.
   ///
@@ -197,53 +131,65 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get login;
 
-  /// No description provided for @userProfile.
+  /// No description provided for @signup.
   ///
   /// In en, this message translates to:
-  /// **'User Profile'**
-  String get userProfile;
+  /// **'Sign Up'**
+  String get signup;
 
-  /// No description provided for @nrs.
+  /// No description provided for @loginScreentext1.
   ///
   /// In en, this message translates to:
-  /// **'NRs'**
-  String get nrs;
+  /// **'Welcome back you\'ve \n been missed'**
+  String get loginScreentext1;
 
-  /// No description provided for @logout.
+  /// No description provided for @loginScreentext2.
   ///
   /// In en, this message translates to:
-  /// **'LogOut'**
-  String get logout;
+  /// **'or continue with'**
+  String get loginScreentext2;
 
-  /// No description provided for @email.
+  /// No description provided for @loginScreentext3.
   ///
   /// In en, this message translates to:
-  /// **'Email'**
-  String get email;
+  /// **'don\'t have an account? '**
+  String get loginScreentext3;
 
-  /// No description provided for @phone.
+  /// No description provided for @trending.
   ///
   /// In en, this message translates to:
-  /// **'Phone'**
-  String get phone;
+  /// **'Trending'**
+  String get trending;
 
-  /// No description provided for @gender.
+  /// No description provided for @latest.
   ///
   /// In en, this message translates to:
-  /// **'Gender'**
-  String get gender;
+  /// **'latest'**
+  String get latest;
 
-  /// No description provided for @address.
+  /// No description provided for @home.
   ///
   /// In en, this message translates to:
-  /// **'Address'**
-  String get address;
+  /// **'Home'**
+  String get home;
 
-  /// No description provided for @company.
+  /// No description provided for @explore.
   ///
   /// In en, this message translates to:
-  /// **'Company'**
-  String get company;
+  /// **'Explore'**
+  String get explore;
+
+  /// No description provided for @bookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark'**
+  String get bookmark;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
