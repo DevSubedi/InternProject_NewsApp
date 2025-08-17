@@ -26,4 +26,43 @@ class NewsApiService {
     }
     return [];
   }
+
+  Future<List<NewsModel>> categoryNewsService({
+    String? category,
+    int page = 1,
+    int pageSize = 10,
+    String country = 'us',
+  }) async {
+    const url = 'https://newsapi.org/v2/top-headlines';
+    try {
+      final params = <String, dynamic>{
+        'country': country,
+        'page': page,
+        'pageSize': pageSize,
+        'apiKey': 'df767b84fbbe46f5b25e66b6eb533029',
+      };
+
+      if (category != null && category.toLowerCase() != 'all') {
+        params['category'] = category.toLowerCase();
+      }
+
+      final response = await dio.get(
+        url,
+        queryParameters: params,
+        options: Options(headers: {'Content-Type': 'application/json'}),
+      );
+
+      if (response.statusCode == 200) {
+        final list = (response.data['articles'] as List?) ?? [];
+        return list.map((e) => NewsModel.fromJson(e)).toList();
+      } else {
+        throw Exception(
+          'Status: ${response.statusCode}, Body: ${response.data}',
+        );
+      }
+    } catch (e) {
+      print('Error during the fetching the category-wise list: $e');
+      return [];
+    }
+  }
 }

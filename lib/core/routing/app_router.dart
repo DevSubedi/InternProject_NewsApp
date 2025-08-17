@@ -4,13 +4,22 @@ import 'package:news_app/core/routing/route_name.dart';
 import 'package:news_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
 import 'package:news_app/features/home/presentation/screens/detail_news_screen.dart';
+import 'package:news_app/features/home/presentation/screens/favorite_screen.dart';
 import 'package:news_app/features/home/presentation/screens/home_screen.dart';
+import 'package:news_app/features/home/presentation/screens/news_page.dart';
+import 'package:news_app/features/home/presentation/screens/trending_news_screen.dart';
+import 'package:news_app/features/setting/presentation/screens/setting_screen.dart';
 
 GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 final GoRouter appRouter = GoRouter(
   navigatorKey: navigationKey,
-  initialLocation: RoutePath.home,
+  initialLocation: RoutePath.newsPage,
   routes: [
+    GoRoute(
+      path: RoutePath.newsPage,
+      name: RouteName.newsPage,
+      builder: (context, state) => NewsPage(),
+    ),
     GoRoute(
       path: RoutePath.home,
       name: RouteName.home,
@@ -28,6 +37,21 @@ final GoRouter appRouter = GoRouter(
         final NewsModel news = state.extra as NewsModel;
         return DetailNewsScreen(news: news);
       },
+    ),
+    GoRoute(
+      path: RoutePath.setting,
+      name: RouteName.setting,
+      builder: (context, state) => SettingScreen(),
+    ),
+    GoRoute(
+      path: RoutePath.favorite,
+      name: RouteName.favorite,
+      builder: (context, state) => FavoriteScreen(),
+    ),
+    GoRoute(
+      path: RoutePath.trendingNews,
+      name: RouteName.trendingNews,
+      builder: (context, state) => TrendingNewsScreen(),
     ),
   ],
 );

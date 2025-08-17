@@ -1,0 +1,47 @@
+// lib/features/news/data/news_repository.dart
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'models/news_article.dart';
+
+class NewsRepository {
+  final String apiKey;
+  final String country;
+  final http.Client _client;
+
+  NewsRepository({
+    required this.apiKey,
+    this.country = 'us',
+    http.Client? client,
+  }) : _client = client ?? http.Client();
+
+  Future<List<NewsArticle>> fetchTopHeadlines({
+    required String category,
+    int page = 1,
+    int pageSize = 20,
+  }) async {
+    final uri = Uri.https(
+      'newsapi.org',
+      '/v2/top-headlines',
+      {
+        'category': category,
+        'country': country,
+        'page': '$page',
+        'pageSize': '$pageSize',
+        'apiKey': apiKey,
+      },
+    );
+
+    final res = await _client.get(uri);
+    if (res.statusCode != 200) {
+      throw Exception('Failed to fetch: ${res.statusCode} ${res.body}');
+    }
+
+    final Map<String, dynamic> data = jsonDecode(res.body);
+    if (data['status'] != 'ok') {
+      throw Exception('API error: ${data['message'] ?? 'Unknown'}');
+    }
+
+    final articlesJson = (data['articles'] as List).cast<Map<String, dynamic>>();
+    return articlesJson.map(NewsArticle.fromJson).toList();
+  }
+}
