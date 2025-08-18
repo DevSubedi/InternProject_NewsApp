@@ -10,7 +10,11 @@ class NewsState extends Equatable {
   final String message;
 
   final List<NewsModel> categoryNews;
+  final DataStatus categoryStatus;
   final String selectedCategory;
+  final List<NewsModel> favoriteNewsList;
+  final NewsModel favoriteNews;
+  final bool showToastFavorite;
 
   const NewsState({
     this.allNews = const [],
@@ -19,6 +23,10 @@ class NewsState extends Equatable {
     this.status = DataStatus.intial,
     this.categoryNews = const [],
     this.selectedCategory = '',
+    this.favoriteNewsList = const [],
+    this.favoriteNews = NewsModel.emptyNewsModel,
+    this.categoryStatus = DataStatus.intial,
+    this.showToastFavorite = false,
   });
 
   NewsState copyWith({
@@ -28,6 +36,10 @@ class NewsState extends Equatable {
     String? message,
     List<NewsModel>? categoryNews,
     String? selectedCategory,
+    List<NewsModel>? favoriteNewsList,
+    NewsModel? favoriteNews,
+    DataStatus? categoryStatus,
+    bool? showToastFavorite,
   }) {
     return NewsState(
       status: status ?? this.status,
@@ -36,6 +48,10 @@ class NewsState extends Equatable {
       individualNews: individualNews ?? this.individualNews,
       categoryNews: categoryNews ?? this.categoryNews,
       selectedCategory: selectedCategory ?? this.selectedCategory,
+      favoriteNewsList: favoriteNewsList ?? this.favoriteNewsList,
+      favoriteNews: favoriteNews ?? this.favoriteNews,
+      categoryStatus: categoryStatus ?? this.categoryStatus,
+      showToastFavorite: showToastFavorite ?? this.showToastFavorite,
     );
   }
 
@@ -48,5 +64,9 @@ class NewsState extends Equatable {
     status,
     selectedCategory,
     categoryNews,
+    categoryStatus,
+    favoriteNews,
+    favoriteNewsList,
+    showToastFavorite,
   ];
 }

@@ -19,7 +19,11 @@ Future<void> main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LocalizationBloc()),
-        BlocProvider(create: (context) => NewsBloc()..add(FetchAllNewsEvent())),
+        BlocProvider(
+          create: (context) => NewsBloc()
+            ..add(FetchAllNewsEvent())
+            ..add(SelectCategoryEvent(selectedCategoryEvent: 'All')),
+        ),
       ],
       child: MyApp(),
     ),

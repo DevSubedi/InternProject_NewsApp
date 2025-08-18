@@ -18,3 +18,11 @@ class SelectCategoryEvent extends NewsEvent {
   String selectedCategoryEvent;
   SelectCategoryEvent({required this.selectedCategoryEvent});
 }
+
+class AddToFavoriteEvent extends NewsEvent {
+  final NewsModel news;
+
+  AddToFavoriteEvent({required this.news});
+}
+
+class ShowFavoriteNewsEvent extends NewsEvent {}

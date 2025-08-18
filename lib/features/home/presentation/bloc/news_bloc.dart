@@ -14,6 +14,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     on<FetchAllNewsEvent>(_onFetchAllNewsEvent);
     on<SelectCategoryEvent>(_onSelectCategoryEvent);
     on<FetchCategoryNewsEvent>(_onFetchCategoryNewsEvent);
+    on<AddToFavoriteEvent>(_onAddToFavoriteEvent);
   }
 
   FutureOr<void> _onFetchAllNewsEvent(
@@ -55,7 +56,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     FetchCategoryNewsEvent event,
     Emitter<NewsState> emit,
   ) async {
-    emit(state.copyWith(status: DataStatus.loading));
+    emit(state.copyWith(categoryStatus: DataStatus.loading));
     try {
       final api = sl<NewsApiService>();
       final selected = state.selectedCategory;
@@ -64,14 +65,40 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
             ? null
             : selected.toLowerCase(),
       );
-      emit(state.copyWith(status: DataStatus.loaded, categoryNews: list));
+      emit(
+        state.copyWith(categoryStatus: DataStatus.loaded, categoryNews: list),
+      );
     } catch (e) {
       emit(
         state.copyWith(
-          status: DataStatus.error,
+          categoryStatus: DataStatus.error,
           message: ' Some error in the categorybloc: $e',
         ),
       );
+    }
+  }
+
+  FutureOr<void> _onAddToFavoriteEvent(
+    AddToFavoriteEvent event,
+    Emitter<NewsState> emit,
+  ) {
+    emit(state.copyWith(favoriteNews: event.news));
+    final news = state.favoriteNews;
+    final FavoriteList = List<NewsModel>.from(state.favoriteNewsList);
+
+    // check if already exists
+    final alreadyExists = FavoriteList.any(
+      (news) => news.title == event.news.title,
+    );
+
+    if (!alreadyExists) {
+      FavoriteList.add(event.news);
+
+      emit(
+        state.copyWith(showToastFavorite: true, favoriteNewsList: FavoriteList),
+      );
+    } else {
+      emit(state.copyWith(showToastFavorite: false));
     }
   }
 }

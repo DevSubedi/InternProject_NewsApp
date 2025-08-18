@@ -17,17 +17,25 @@ class TrendingNewsWidget extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 5.w),
         child: Stack(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10.w),
+            Positioned.fill(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.w),
 
-              child: Image.network(
-                height: 250.h,
-                urlImage,
-                fit: BoxFit.cover,
-                width: MediaQuery.of(context).size.width,
+                child: Image.network(
+                  urlImage.isNotEmpty == true
+                      ? urlImage
+                      : 'https://via.placeholder.com/150',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      'assets/image-load-failed.png',
+                      fit: BoxFit.contain,
+                    );
+                  },
+                ),
               ),
             ),
-            Container(
+            Container(  
               height: 250.h,
               padding: EdgeInsets.only(left: 8.w),
               margin: EdgeInsets.only(top: 170.h),

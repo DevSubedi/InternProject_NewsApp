@@ -48,7 +48,7 @@ class CategoryTabWidget extends StatelessWidget {
                 context.read<NewsBloc>().add(
                   SelectCategoryEvent(selectedCategoryEvent: CategoryName),
                 );
-                context.read<NewsBloc>().add(FetchCategoryNewsEvent());
+                // context.read<NewsBloc>().add(FetchCategoryNewsEvent());
               },
             ),
           ),
@@ -58,13 +58,13 @@ class CategoryTabWidget extends StatelessWidget {
               children: categories.map((c) {
                 return BlocBuilder<NewsBloc, NewsState>(
                   builder: (context, state) {
-                    if (state.status == DataStatus.loading &&
+                    if (state.categoryStatus == DataStatus.loading &&
                         state.selectedCategory?.toLowerCase() ==
                             c.toLowerCase()) {
                       return const Center(child: CircularProgressIndicator());
                     }
 
-                    if (state.status == DataStatus.error &&
+                    if (state.categoryStatus == DataStatus.error &&
                         state.selectedCategory?.toLowerCase() ==
                             c.toLowerCase()) {
                       return Center(child: Text(state.message ?? 'Error'));
@@ -77,14 +77,17 @@ class CategoryTabWidget extends StatelessWidget {
                     }
 
                     // The loaded news list for this category
-                    return ListView.builder(
-                      itemCount: state.categoryNews.length,
-                      itemBuilder: (context, index) {
-                        return NewsCardWidget(
-                          singleNews: state.categoryNews[index],
-                        );
-                      },
-                    );
+                    if (state.categoryStatus == DataStatus.loaded) {
+                      return ListView.builder(
+                        itemCount: state.categoryNews.length,
+                        itemBuilder: (context, index) {
+                          return NewsCardWidget(
+                            singleNews: state.categoryNews[index],
+                          );
+                        },
+                      );
+                    }
+                    return Container();
                   },
                 );
               }).toList(),

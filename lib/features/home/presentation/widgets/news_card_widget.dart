@@ -35,8 +35,16 @@ class NewsCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.h),
               ),
               child: Image.network(
-                singleNews.imageUrl ?? '',
+                singleNews.imageUrl?.isNotEmpty == true
+                    ? singleNews.imageUrl!
+                    : 'https://via.placeholder.com/150',
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/image-load-failed.png',
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
 
