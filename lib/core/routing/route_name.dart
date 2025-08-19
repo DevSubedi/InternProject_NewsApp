@@ -1,5 +1,6 @@
 class RouteName {
   static const login = 'loginScreen';
+  static const signUp = 'singUpScreen';
   static const newsPage = 'newsPage';
   static const home = 'homeScreen';
   static const detailScreen = 'detailScreen';
@@ -11,6 +12,7 @@ class RouteName {
 class RoutePath {
   static const newsPage = '/newPage';
   static const login = '/loginScreen';
+  static const signUp = '/singUpScreen';
   static const home = '/homeScreen';
   static const detailScreen = '/detailScreen';
   static const setting = '/settingScreen';

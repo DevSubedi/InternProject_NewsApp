@@ -6,9 +6,9 @@ class ShowToastWidget {
   static void show(String message) {
     Fluttertoast.showToast(
       msg: message,
-      toastLength: Toast.LENGTH_LONG, //makes it last longer
+      toastLength: Toast.LENGTH_SHORT, //makes it last longer
       gravity: ToastGravity.TOP, //position(Top,center,bottom)
-      timeInSecForIosWeb: 3, // iOS/Web duration
+      timeInSecForIosWeb: 2, // iOS/Web duration
       backgroundColor: Colors.green.shade600,
       textColor: Colors.white,
       fontSize: 16.h,

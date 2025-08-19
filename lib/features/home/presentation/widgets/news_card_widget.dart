@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/di/service_locator.dart';
 import 'package:news_app/core/routing/navigation_service.dart';
 import 'package:news_app/core/routing/route_name.dart';
-import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/data/data_source/date_time_service.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
 import 'package:news_app/features/home/presentation/screens/detail_news_screen.dart';

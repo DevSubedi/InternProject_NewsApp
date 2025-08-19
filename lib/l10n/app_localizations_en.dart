@@ -42,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get trending => 'Trending';
 
   @override
-  String get latest => 'latest';
+  String get latest => 'Latest';
 
   @override
   String get home => 'Home';
@@ -54,5 +54,77 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bookmark => 'Bookmark';
 
   @override
-  String get profile => 'profile';
+  String get profile => 'Profile';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get phoneNo => 'Phone Number';
+
+  @override
+  String get nepal => 'Nepal';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get others => 'Others';
+
+  @override
+  String get age => 'Age';
+
+  @override
+  String get signUp => 'Sign Up';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get technology => 'Technology';
+
+  @override
+  String get business => 'Business';
+
+  @override
+  String get entertainment => 'Entertainment';
+
+  @override
+  String get general => 'General';
+
+  @override
+  String get health => 'Health';
+
+  @override
+  String get science => 'Science';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get searchText => 'Enter the news to search';
+
+  @override
+  String get signupText1 => 'Signup to get Started';
+
+  @override
+  String get signupText2 => 'Already have an account ?';
+
+  @override
+  String get email => 'Email';
 }

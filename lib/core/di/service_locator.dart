@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:news_app/features/home/data/data_source/date_time_service.dart';
 import 'package:news_app/features/home/data/data_source/news_api_service.dart';
+import 'package:news_app/features/search/data/search_api_service.dart';
 
 final sl = GetIt.instance;
 void setupLocator() {
@@ -13,4 +14,6 @@ void setupLocator() {
   sl.registerLazySingleton<NewsApiService>(() => NewsApiService(sl()));
 
   sl.registerLazySingleton<DateTimeService>(() => DateTimeService());
+
+  sl.registerLazySingleton<SearchApiService>(() => SearchApiService(sl()));
 }

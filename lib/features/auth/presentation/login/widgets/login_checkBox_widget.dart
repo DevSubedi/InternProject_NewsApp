@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 
 class LoginCheckBoxWidget extends StatelessWidget {
   final bool isChecked;
   final String title;
-  final Function onChanged;
+  final ValueChanged<bool?> onChanged;
   const LoginCheckBoxWidget({
     super.key,
     this.isChecked = false,
@@ -16,7 +16,7 @@ class LoginCheckBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Checkbox(value: isChecked, onChanged: (value) {}),
+        Checkbox(value: isChecked, onChanged: onChanged),
         TextWidget(word: title),
       ],
     );

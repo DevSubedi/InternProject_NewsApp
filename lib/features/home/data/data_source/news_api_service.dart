@@ -29,8 +29,8 @@ class NewsApiService {
 
   Future<List<NewsModel>> categoryNewsService({
     String? category,
-    int page = 1,
-    int pageSize = 10,
+    int page = 2,
+    int pageSize = 20,
     String country = 'us',
   }) async {
     const url = 'https://newsapi.org/v2/top-headlines';

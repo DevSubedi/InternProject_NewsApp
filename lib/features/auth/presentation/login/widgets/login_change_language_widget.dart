@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/localization/presentation/bloc/localization_bloc.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 
 class LoginChangeLanguageWidget extends StatelessWidget {
   LoginChangeLanguageWidget({super.key});
 
-  final ValueNotifier<String> lang = ValueNotifier<String>(''); // ✅ good
+  final ValueNotifier<String> lang = ValueNotifier<String>(''); 
   final List<String> language = ['Nepali', 'English'];
   final List<String> localeCodes = ['ne', 'en'];
 
@@ -15,7 +15,7 @@ class LoginChangeLanguageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10 = AppLocalizations.of(context)!;
 
-    // ✅ Set the initial selected value only once
+    
     lang.value = lang.value.isEmpty
         ? Localizations.localeOf(context).languageCode
         : lang.value;
@@ -28,14 +28,14 @@ class LoginChangeLanguageWidget extends StatelessWidget {
           valueListenable: lang,
           builder: (context, value, child) {
             return DropdownButton<String>(
-              value: value, // ✅ shows selected value near arrow
+              value: value, 
               items: [
                 DropdownMenuItem(
-                  value: 'ne', // ✅ CORRECT VALUE
+                  value: 'ne',
                   child: TextWidget(word: language[0]),
                 ),
                 DropdownMenuItem(
-                  value: 'en', // ✅ CORRECT VALUE
+                  value: 'en', 
                   child: TextWidget(word: language[1]),
                 ),
               ],

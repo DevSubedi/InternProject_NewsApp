@@ -3,10 +3,11 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:news_app/core/routing/navigation_service.dart';
-import 'package:news_app/features/auth/presentation/cubit/login_state.dart';
+import 'package:news_app/features/auth/presentation/login/cubit/login_state.dart';
 
-import '../../../../core/routing/route_name.dart';
+import '../../../../../core/routing/route_name.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const LoginState());
@@ -20,19 +21,19 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> loginPressed(BuildContext context) async {
-    log('${state.email}, ${state.password}');
-    log('Email input raw: ${state.email}');
-    log('Trimmed: ${state.email.trim()}');
+    // log('${state.email}, ${state.password}');
+    // log('Email input raw: ${state.email}');
+    // log('Trimmed: ${state.email.trim()}');
 
     String email = state.email.trim();
     String password = state.password.trim();
 
     if (email.isEmpty || !email.contains('@')) {
-      emit(state.copyWith(loginStatus: 'Please enter a valid email address'));
+      emit(state.copyWith(emailStatus: 'Please enter a valid email address'));
       return;
     }
     if (password.length < 6 || password.isEmpty) {
-      emit(state.copyWith(loginStatus: 'Password must be of 6 characters'));
+      emit(state.copyWith(passwordStatus: 'Password must be of 6 characters'));
       return;
     }
     emit(state.copyWith(statusMessage: 'Validating login...'));
@@ -41,10 +42,15 @@ class LoginCubit extends Cubit<LoginState> {
 
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-      log('Navigating to next page');
+      //Hive part
+      var box = Hive.box('authBox');
+      await box.put('isLoggedIn', true);
+      await box.put('email', email);
+      await box.put('password', password);
 
       emit(state.copyWith(loginStatus: 'Login Sucessful!'));
-      NavigationService.pushNamedReplacement(RouteName.home);
+
+      NavigationService.pushNamedReplacement(RouteName.newsPage);
     } on FirebaseAuthException catch (e) {
       log('${e.message}');
       emit(state.copyWith(loginStatus: '${e.message} : Login Failed!'));
@@ -54,4 +60,7 @@ class LoginCubit extends Cubit<LoginState> {
       emit(state.copyWith(loginStatus: 'Unexpected Error occured: '));
     }
   }
+
+  //hive for remember me
+  void toggleRememberMe(bool value) => emit(state.copyWith(rememberMe: value));
 }

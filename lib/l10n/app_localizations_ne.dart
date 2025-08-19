@@ -39,10 +39,10 @@ class AppLocalizationsNe extends AppLocalizations {
   String get loginScreentext3 => 'खाता छैन?';
 
   @override
-  String get trending => 'प्रवृत्तिमा';
+  String get trending => 'चल्तीमा';
 
   @override
-  String get latest => 'नवीनतम';
+  String get latest => 'भर्खरै';
 
   @override
   String get home => 'गृहपृष्ठ';
@@ -55,4 +55,76 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get profile => 'प्रोफाइल';
+
+  @override
+  String get name => 'नाम';
+
+  @override
+  String get phone => 'फोन';
+
+  @override
+  String get phoneNo => 'फोन नम्बर';
+
+  @override
+  String get nepal => 'नेपाल';
+
+  @override
+  String get gender => 'लिङ्ग';
+
+  @override
+  String get male => 'पुरुष';
+
+  @override
+  String get female => 'महिला';
+
+  @override
+  String get others => 'अन्य';
+
+  @override
+  String get age => 'उमेर';
+
+  @override
+  String get signUp => 'साइन अप';
+
+  @override
+  String get viewAll => 'सबै हेर्नुहोस्';
+
+  @override
+  String get all => 'सबै';
+
+  @override
+  String get technology => 'प्रविधि';
+
+  @override
+  String get business => 'व्यापार';
+
+  @override
+  String get entertainment => 'मनोरञ्जन';
+
+  @override
+  String get general => 'सामान्य';
+
+  @override
+  String get health => 'स्वास्थ्य';
+
+  @override
+  String get science => 'विज्ञान';
+
+  @override
+  String get favorites => 'मनपर्ने';
+
+  @override
+  String get search => 'खोजी';
+
+  @override
+  String get searchText => 'खोज्न समाचार लेख्नुहोस्';
+
+  @override
+  String get signupText1 => 'सुरु गर्न साइन अप गर्नुहोस्';
+
+  @override
+  String get signupText2 => 'पहिले नै खाता छ ?';
+
+  @override
+  String get email => 'इमेल';
 }

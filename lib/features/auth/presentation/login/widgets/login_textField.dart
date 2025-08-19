@@ -5,6 +5,7 @@ class LoginTextfield extends StatelessWidget {
   final String hintText;
   final bool? icon;
   final Function(String)? onChanged;
+  final String? errorText;
 
   LoginTextfield({
     super.key,
@@ -12,6 +13,7 @@ class LoginTextfield extends StatelessWidget {
     required this.hintText,
     this.icon = false,
     this.onChanged,
+    this.errorText,
   });
 
   final ValueNotifier<bool> _obscurePassword = ValueNotifier(true);
@@ -23,6 +25,7 @@ class LoginTextfield extends StatelessWidget {
         onChanged: (value) => onChanged?.call(value),
         decoration: InputDecoration(
           hintText: hintText,
+          errorText: errorText,
           border: OutlineInputBorder(),
         ),
       );
@@ -33,7 +36,9 @@ class LoginTextfield extends StatelessWidget {
           return TextFormField(
             onChanged: (value) => onChanged?.call(value),
             obscureText: isObscure,
+
             decoration: InputDecoration(
+              errorText: errorText,
               hintText: hintText,
 
               border: OutlineInputBorder(),

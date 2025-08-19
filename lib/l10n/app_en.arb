@@ -20,7 +20,36 @@
     "home" : "Home",
     "explore" : "Explore",
     "bookmark" : "Bookmark",
-    "profile" : "profile"
+    "profile" : "profile",
+
+    "name": "Name",
+  "phone": "Phone",
+   "phoneNo": "Phone Number",
+  "nepal": "Nepal",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "others": "Others",
+  "age": "Age",
+  "signUp": "Sign Up",
+  "trending": "Trending",
+  "viewAll": "View All",
+  "latest": "Latest",
+  "all": "All",
+  "technology": "Technology",
+  "business": "Business",
+  "entertainment": "Entertainment",
+  "general": "General",
+  "health": "Health",
+  "science": "Science",
+  "favorites": "Favorites",
+  "home": "Home",
+  "search": "Search",
+  "searchText": "Enter the news to search",
+  "profile": "Profile",
+  "signupText1": "Signup to get Started",
+  "signupText2": "Already have an account ?",
+  "email": "Email"
 
 
 }

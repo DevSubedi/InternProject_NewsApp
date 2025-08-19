@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 
 class LoginButton extends StatelessWidget {
   final String title;

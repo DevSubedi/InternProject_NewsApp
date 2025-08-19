@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/routing/navigation_service.dart';
 import 'package:news_app/core/routing/route_name.dart';
-import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
 
 class TrendingNewsWidget extends StatelessWidget {
@@ -35,7 +35,7 @@ class TrendingNewsWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Container(  
+            Container(
               height: 250.h,
               padding: EdgeInsets.only(left: 8.w),
               margin: EdgeInsets.only(top: 170.h),

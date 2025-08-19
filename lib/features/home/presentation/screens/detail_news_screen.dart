@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:news_app/core/di/service_locator.dart';
-import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/data/data_source/date_time_service.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
 import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
-import 'package:news_app/features/home/presentation/widgets/show_toast_widget.dart';
+import 'package:news_app/common/widgets/show_toast_widget.dart';
 
 class DetailNewsScreen extends StatelessWidget {
   final NewsModel news;
@@ -58,12 +58,20 @@ class DetailNewsScreen extends StatelessWidget {
                 ),
                 8.verticalSpace,
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextWidget(
-                      word: ' ${news.author}',
-                      size: 16.h,
-                      weight: FontWeight.bold,
+                    SizedBox(
+                      width: 250.w,
+                      child: Text(
+                        ' ${news.author}',
+                        style: TextStyle(
+                          fontSize: 16.h,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     TextWidget(
                       word:

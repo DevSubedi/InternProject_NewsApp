@@ -3,14 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:news_app/features/auth/presentation/cubit/login_cubit.dart';
-import 'package:news_app/features/auth/presentation/cubit/login_state.dart';
-import 'package:news_app/features/auth/presentation/widgets/login_change_language_widget.dart';
-import 'package:news_app/features/auth/presentation/widgets/login_checkBox_widget.dart';
-import 'package:news_app/features/auth/presentation/widgets/login_button_widget.dart';
-import 'package:news_app/features/auth/presentation/widgets/login_button_with_icon.dart';
-import 'package:news_app/features/auth/presentation/widgets/login_textField.dart';
-import 'package:news_app/features/auth/presentation/widgets/text_widget.dart';
+import 'package:news_app/core/routing/navigation_service.dart';
+import 'package:news_app/core/routing/route_name.dart';
+import 'package:news_app/features/auth/presentation/login/cubit/login_cubit.dart';
+import 'package:news_app/features/auth/presentation/login/cubit/login_state.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/login_button_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/login_change_language_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/login_checkBox_widget.dart';
+
+import 'package:news_app/features/auth/presentation/login/widgets/login_button_with_icon.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/login_textField.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
+
 import 'package:news_app/l10n/app_localizations.dart';
 
 class LoginScreenPart extends StatelessWidget {
@@ -53,7 +57,9 @@ class LoginScreenPart extends StatelessWidget {
                     word: l10.hello,
                     size: 48.h,
                     weight: FontWeight.bold,
+                    textColor: Colors.blue,
                   ),
+
                   TextWidget(
                     word: l10.again,
                     size: 48.h,
@@ -84,9 +90,12 @@ class LoginScreenPart extends StatelessWidget {
                         onChanged: handleEmailChange,
                         // onChanged: (value) =>
                         //     context.read<LoginCubit>().getEmail(value),
-                        title: 'UserName',
-                        hintText: 'Enter Your ${l10.username}',
+                        title: l10.email,
+                        hintText: 'Enter Your ${l10.email}',
                         icon: false,
+                        errorText: state.emailStatus.isNotEmpty
+                            ? state.emailStatus
+                            : null,
                       ),
                       16.verticalSpace,
                       Row(
@@ -103,10 +112,18 @@ class LoginScreenPart extends StatelessWidget {
                         title: 'Password',
                         hintText: '*********',
                         icon: true,
+                        errorText: state.passwordStatus.isNotEmpty
+                            ? state.passwordStatus
+                            : null,
                       ),
                       LoginCheckBoxWidget(
+                        isChecked: state.rememberMe,
                         title: 'Remember me',
-                        onChanged: () {},
+                        onChanged: (value) {
+                          context.read<LoginCubit>().toggleRememberMe(
+                            value ?? false,
+                          );
+                        },
                       ),
                       16.verticalSpace,
                       LoginButton(
@@ -115,6 +132,7 @@ class LoginScreenPart extends StatelessWidget {
                         buttonHeight: 50,
                         buttonWidth: 379,
                         onPressed: (ctx) {
+                          FocusScope.of(context).unfocus();
                           context.read<LoginCubit>().loginPressed(ctx);
                         },
                       ),
@@ -137,9 +155,13 @@ class LoginScreenPart extends StatelessWidget {
                         children: [
                           TextWidget(word: l10.loginScreentext3),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              NavigationService.pushNamed(RouteName.signUp);
+                            },
                             child: TextWidget(
                               word: l10.signup,
+                              weight: FontWeight.w500,
+                              size: 18.h,
                               textColor: Color(0xFF1877F2),
                             ),
                           ),

@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:news_app/core/routing/app_router.dart';
-import 'package:news_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:news_app/features/auth/presentation/login/screens/login_screen.dart';
 import 'package:news_app/core/di/service_locator.dart';
 import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
 import 'package:news_app/features/localization/presentation/bloc/localization_bloc.dart';
@@ -12,6 +14,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  var box = await Hive.openBox('authBox');
   setupLocator();
   await Firebase.initializeApp();
 
@@ -25,13 +29,14 @@ Future<void> main() async {
             ..add(SelectCategoryEvent(selectedCategoryEvent: 'All')),
         ),
       ],
-      child: MyApp(),
+      child: MyApp(authBox: box),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Box authBox;
+  const MyApp({super.key, required this.authBox});
 
   @override
   Widget build(BuildContext context) {
