@@ -114,7 +114,7 @@ class AppLocalizationsNe extends AppLocalizations {
   String get favorites => 'मनपर्ने';
 
   @override
-  String get search => 'खोजी';
+  String get search => 'खोज्नुहोस्';
 
   @override
   String get searchText => 'खोज्न समाचार लेख्नुहोस्';
@@ -127,4 +127,31 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get email => 'इमेल';
+
+  @override
+  String get myProfile => 'मेरो प्रोफाइल';
+
+  @override
+  String get nepali => 'नेपाली';
+
+  @override
+  String get news => 'समाचार';
+
+  @override
+  String get favorite => 'मनपर्ने';
+
+  @override
+  String get detailedNews => 'विस्तृत समाचार';
+
+  @override
+  String get buttonText1 => 'मनपर्नेमा थप्नुहोस्';
+
+  @override
+  String get searchTextField => 'खोज्न समाचार प्रविष्ट गर्नुहोस्';
+
+  @override
+  String get logout => 'लॉगआउट';
+
+  @override
+  String get rememberMe => 'मलाई सम्झनुहोस्';
 }

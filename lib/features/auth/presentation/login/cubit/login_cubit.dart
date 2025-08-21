@@ -18,7 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void getPassword(String password) {
     emit(state.copyWith(password: password));
-  }
+  } 
 
   Future<void> loginPressed(BuildContext context) async {
     // log('${state.email}, ${state.password}');

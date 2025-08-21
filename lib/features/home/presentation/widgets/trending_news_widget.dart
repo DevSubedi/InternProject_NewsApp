@@ -5,6 +5,7 @@ import 'package:news_app/core/routing/navigation_service.dart';
 import 'package:news_app/core/routing/route_name.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
+import 'package:news_app/l10n/app_localizations.dart';
 
 class TrendingNewsWidget extends StatelessWidget {
   final List<NewsModel> newsList;
@@ -12,6 +13,7 @@ class TrendingNewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10 = AppLocalizations.of(context)!;
     Widget buildImage(String urlImage, int index, String name) {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 5.w),
@@ -70,12 +72,16 @@ class TrendingNewsWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextWidget(word: 'Trending', size: 18.h, weight: FontWeight.w600),
+              TextWidget(
+                word: l10.trending,
+                size: 18.h,
+                weight: FontWeight.w600,
+              ),
               TextButton(
                 onPressed: () {
                   NavigationService.pushNamed(RouteName.trendingNews);
                 },
-                child: TextWidget(word: 'View All'),
+                child: TextWidget(word: l10.viewAll),
               ),
             ],
           ),
@@ -101,7 +107,7 @@ class TrendingNewsWidget extends StatelessWidget {
             height: 250.h,
 
             enlargeCenterPage: true,
-            autoPlay: false,
+            autoPlay: true,
 
             // autoPlayAnimationDuration: Duration(microseconds: 1000),
             enlargeStrategy: CenterPageEnlargeStrategy.height,

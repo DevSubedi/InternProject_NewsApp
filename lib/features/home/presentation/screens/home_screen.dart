@@ -8,6 +8,7 @@ import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
 import 'package:news_app/features/home/presentation/widgets/category_tab_widget.dart';
 
 import 'package:news_app/features/home/presentation/widgets/trending_news_widget.dart';
+import 'package:news_app/l10n/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   final bool showBottomNav;
@@ -15,13 +16,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10 = AppLocalizations.of(context)!;
     return SafeArea(
       child: DefaultTabController(
         length: 7, // categories count
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              /// 🔹 AppBar / Logo
+              ///  AppBar / Logo
               SliverToBoxAdapter(
                 child: Column(
                   children: [
@@ -41,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              /// 🔹 Trending Section
+              /// Trending Section
               SliverToBoxAdapter(
                 child: Column(
                   children: [
@@ -73,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.h),
                     child: Text(
-                      'Latest',
+                      l10.latest,
                       style: TextStyle(
                         fontSize: 18.h,
                         fontWeight: FontWeight.w600,
@@ -100,14 +102,14 @@ class HomeScreen extends StatelessWidget {
                     // labelColor: Colors.blue,
                     // unselectedLabelColor: Colors.black,
                     // dividerColor: Colors.transparent,
-                    tabs: const [
-                      Tab(text: 'All'),
-                      Tab(text: 'Technology'),
-                      Tab(text: 'Business'),
-                      Tab(text: 'Entertainment'),
-                      Tab(text: 'General'),
-                      Tab(text: 'Health'),
-                      Tab(text: 'Science'),
+                    tabs: [
+                      Tab(text: l10.all),
+                      Tab(text: l10.technology),
+                      Tab(text: l10.business),
+                      Tab(text: l10.entertainment),
+                      Tab(text: l10.general),
+                      Tab(text: l10.health),
+                      Tab(text: l10.science),
                     ],
                   ),
                 ),

@@ -8,6 +8,7 @@ import 'package:news_app/features/home/data/data_source/date_time_service.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
 import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
 import 'package:news_app/common/widgets/show_toast_widget.dart';
+import 'package:news_app/l10n/app_localizations.dart';
 
 class DetailNewsScreen extends StatelessWidget {
   final NewsModel news;
@@ -16,9 +17,16 @@ class DetailNewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10 = AppLocalizations.of(context)!;
     final DateTimeService date = sl<DateTimeService>();
     return Scaffold(
-      appBar: AppBar(title: Text('Detailed Page')),
+      appBar: AppBar(
+        title: TextWidget(
+          word: l10.detailedNews,
+          textColor: Colors.blueAccent,
+          size: 32.h,
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0.w),
         child: BlocListener<NewsBloc, NewsState>(
@@ -28,12 +36,12 @@ class DetailNewsScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.showToastFavorite) {
               ShowToastWidget.show('News Added to Favorite');
+              context.read<NewsBloc>().emit(
+                state.copyWith(showToastFavorite: false),
+              );
             }
 
             //reset toast so that it doesn't trigger again
-            // context.read<NewsBloc>().emit(
-            //   state.copyWith(showToastCategory: false),
-            // );
           },
           child: Container(
             child: Column(
@@ -89,7 +97,7 @@ class DetailNewsScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    backgroundColor: Colors.blueGrey,
+                    backgroundColor: Colors.blueAccent,
                     overlayColor: Colors.white.withValues(alpha: 10),
                   ),
                   onPressed: () {
@@ -99,7 +107,7 @@ class DetailNewsScreen extends StatelessWidget {
                   },
 
                   child: TextWidget(
-                    word: 'Add To Favorite',
+                    word: l10.buttonText1,
                     size: 20.h,
                     weight: FontWeight.bold,
                     textColor: Colors.white,

@@ -79,7 +79,7 @@ class LoginScreenPart extends StatelessWidget {
                       Row(
                         children: [
                           TextWidget(
-                            word: l10.username,
+                            word: l10.email,
                             textColor: Color(0xFF4E4B66),
                           ),
                           TextWidget(word: '*', textColor: Colors.red),
@@ -118,7 +118,7 @@ class LoginScreenPart extends StatelessWidget {
                       ),
                       LoginCheckBoxWidget(
                         isChecked: state.rememberMe,
-                        title: 'Remember me',
+                        title: l10.rememberMe,
                         onChanged: (value) {
                           context.read<LoginCubit>().toggleRememberMe(
                             value ?? false,
@@ -145,7 +145,9 @@ class LoginScreenPart extends StatelessWidget {
                           LoginButtonWithIcon(
                             title: 'Google',
                             icon: FontAwesomeIcons.google,
-                            onPressed: () {},
+                            onPressed: () {
+                              NavigationService.pushNamed(RouteName.newsPage);
+                            },
                           ),
                         ],
                       ),

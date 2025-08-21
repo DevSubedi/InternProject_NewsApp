@@ -7,6 +7,7 @@ class RouteName {
   static const setting = 'settingScreen';
   static const favorite = 'favoriteScreen';
   static const trendingNews = 'trendingNewsScreen';
+  static const profile = 'profile';
 }
 
 class RoutePath {
@@ -19,4 +20,5 @@ class RoutePath {
   static const favorite = '/favoriteScreen';
   static const search = '/searchScreen';
   static const trendingNews = '/trendingNewsScreen';
+  static const profile = '/profile';
 }

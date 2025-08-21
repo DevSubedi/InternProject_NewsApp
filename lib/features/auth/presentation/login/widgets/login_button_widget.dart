@@ -24,7 +24,7 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF1877F2),
+        backgroundColor: buttonBackgroundColor ?? Color(0xFF1877F2),
         minimumSize: Size(buttonWidth ?? 379, buttonHeight ?? 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.h),

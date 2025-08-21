@@ -63,7 +63,7 @@ class SignUpScreen extends StatelessWidget {
                           SignUpTextfieldWidget(title: l10.password),
                           InputField(
                             label: "Password",
-                            obscureText: false,
+                            obscureText: true,
                             onChanged: (v) =>
                                 context.read<SignupCubit>().getPassword(v),
                             errorText: state.passwordStatus,
@@ -89,17 +89,24 @@ class SignUpScreen extends StatelessWidget {
                           SignUpTextfieldWidget(title: l10.gender),
                           DropdownButtonFormField<String>(
                             value: state.gender,
-                            items: [l10.male, l10.female, l10.others]
-                                .map(
-                                  (g) => DropdownMenuItem(
-                                    value: g,
-                                    child: Text(g),
-                                  ),
-                                )
-                                .toList(),
+                            items: [
+                              DropdownMenuItem(
+                                value: "male",
+                                child: Text(l10.male),
+                              ),
+                              DropdownMenuItem(
+                                value: "female",
+                                child: Text(l10.female),
+                              ),
+                              DropdownMenuItem(
+                                value: "others",
+                                child: Text(l10.others),
+                              ),
+                            ],
+
                             onChanged: (v) => context
                                 .read<SignupCubit>()
-                                .getGender(v ?? l10.male),
+                                .getGender(v ?? "male"),
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                             ),
@@ -137,8 +144,8 @@ class SignUpScreen extends StatelessWidget {
                             },
                             child: state.signupStatus == "loading"
                                 ? const CircularProgressIndicator()
-                                : const TextWidget(
-                                    word: 'Signup',
+                                : TextWidget(
+                                    word: l10.signup,
                                     size: 18,
                                     textColor: Colors.white,
                                     weight: FontWeight.w600,

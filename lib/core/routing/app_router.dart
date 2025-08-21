@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'package:news_app/core/routing/route_name.dart';
 import 'package:news_app/features/auth/presentation/login/screens/login_screen.dart';
 import 'package:news_app/features/auth/presentation/signup/screens/sign_up_screen.dart';
@@ -9,13 +11,17 @@ import 'package:news_app/features/home/presentation/screens/favorite_screen.dart
 import 'package:news_app/features/home/presentation/screens/home_screen.dart';
 import 'package:news_app/features/home/presentation/screens/news_page.dart';
 import 'package:news_app/features/home/presentation/screens/trending_news_screen.dart';
+import 'package:news_app/features/profile/presentation/screens/profile_screen.dart';
 
 import 'package:news_app/features/setting/presentation/screens/setting_screen.dart';
 
 GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 final GoRouter appRouter = GoRouter(
   navigatorKey: navigationKey,
-  initialLocation: RoutePath.login,
+  initialLocation: Hive.box('authBox').get('isLoggedIn', defaultValue: false)
+      ? RoutePath.newsPage
+      : RoutePath.login,
+  //RoutePath.login,
   routes: [
     GoRoute(
       path: RoutePath.newsPage,
@@ -59,6 +65,16 @@ final GoRouter appRouter = GoRouter(
       path: RoutePath.trendingNews,
       name: RouteName.trendingNews,
       builder: (context, state) => TrendingNewsScreen(),
+    ),
+    GoRoute(
+      path: RoutePath.profile,
+      name: RouteName.profile,
+      builder: (context, state) {
+        final currentUser = FirebaseAuth.instance.currentUser;
+        final userId = currentUser?.uid;
+
+        return ProfileScreen(userId: 'userId');
+      },
     ),
   ],
 );

@@ -5,12 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/presentation/widgets/news_card_widget.dart';
 import 'package:news_app/features/search/presentation/bloc/search_bloc.dart';
+import 'package:news_app/l10n/app_localizations.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10 = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: SafeArea(
@@ -33,7 +35,7 @@ class SearchScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 16.0.w),
                   child: TextWidget(
-                    word: 'Search',
+                    word: 'News',
                     size: 32.h,
                     weight: FontWeight.w700,
                   ),
@@ -41,7 +43,7 @@ class SearchScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 4.0.w),
                   child: TextWidget(
-                    word: 'News',
+                    word: l10.search,
                     size: 32.h,
                     weight: FontWeight.w700,
                     textColor: Colors.blueAccent,

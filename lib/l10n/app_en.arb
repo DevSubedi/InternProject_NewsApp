@@ -49,7 +49,18 @@
   "profile": "Profile",
   "signupText1": "Signup to get Started",
   "signupText2": "Already have an account ?",
-  "email": "Email"
+  "email": "Email",
+  "myProfile": "My Profile",
+  "changeLanguage": "Change Language",
+  "nepali": "Nepali",
+  "search": "Search",
+  "news": "News",
+  "favorite": "Favorite",
+  "detailedNews": "Detailed News",
+  "buttonText1": "Add To Favorite",
+  "searchTextField": "Enter the news to search",
+  "logout": "Logout",
+  "rememberMe": "Remember me"
 
 
 }

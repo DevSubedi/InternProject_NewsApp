@@ -5,7 +5,7 @@ enum DataStatus { intial, loading, loaded, error }
 class NewsState extends Equatable {
   final DataStatus status;
   final List<NewsModel> allNews;
-  final NewsModel individualNews;
+  final NewsModel? individualNews;
 
   final String message;
 
@@ -13,20 +13,24 @@ class NewsState extends Equatable {
   final DataStatus categoryStatus;
   final String selectedCategory;
   final List<NewsModel> favoriteNewsList;
-  final NewsModel favoriteNews;
+  final NewsModel? favoriteNews;
   final bool showToastFavorite;
+  final NewsModel? newsToRemove;
+  final bool showToastNewsDeletion;
 
   const NewsState({
     this.allNews = const [],
-    this.individualNews = NewsModel.emptyNewsModel,
+    this.individualNews = null,
     this.message = '',
     this.status = DataStatus.intial,
     this.categoryNews = const [],
     this.selectedCategory = '',
     this.favoriteNewsList = const [],
-    this.favoriteNews = NewsModel.emptyNewsModel,
+    this.favoriteNews = null,
     this.categoryStatus = DataStatus.intial,
     this.showToastFavorite = false,
+    this.newsToRemove = null,
+    this.showToastNewsDeletion = false,
   });
 
   NewsState copyWith({
@@ -40,6 +44,8 @@ class NewsState extends Equatable {
     NewsModel? favoriteNews,
     DataStatus? categoryStatus,
     bool? showToastFavorite,
+    NewsModel? newsToRemove,
+    bool? showToastNewsDeletion,
   }) {
     return NewsState(
       status: status ?? this.status,
@@ -52,6 +58,9 @@ class NewsState extends Equatable {
       favoriteNews: favoriteNews ?? this.favoriteNews,
       categoryStatus: categoryStatus ?? this.categoryStatus,
       showToastFavorite: showToastFavorite ?? this.showToastFavorite,
+      newsToRemove: newsToRemove ?? this.newsToRemove,
+      showToastNewsDeletion:
+          showToastNewsDeletion ?? this.showToastNewsDeletion,
     );
   }
 
@@ -68,5 +77,7 @@ class NewsState extends Equatable {
     favoriteNews,
     favoriteNewsList,
     showToastFavorite,
+    newsToRemove,
+    showToastNewsDeletion,
   ];
 }

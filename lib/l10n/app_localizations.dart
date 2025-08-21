@@ -334,6 +334,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Email'**
   String get email;
+
+  /// No description provided for @myProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'My Profile'**
+  String get myProfile;
+
+  /// No description provided for @nepali.
+  ///
+  /// In en, this message translates to:
+  /// **'Nepali'**
+  String get nepali;
+
+  /// No description provided for @news.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get news;
+
+  /// No description provided for @favorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favorite;
+
+  /// No description provided for @detailedNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed News'**
+  String get detailedNews;
+
+  /// No description provided for @buttonText1.
+  ///
+  /// In en, this message translates to:
+  /// **'Add To Favorite'**
+  String get buttonText1;
+
+  /// No description provided for @searchTextField.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the news to search'**
+  String get searchTextField;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember me'**
+  String get rememberMe;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

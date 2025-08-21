@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 import 'package:news_app/core/di/service_locator.dart';
 import 'package:news_app/features/home/data/data_source/news_api_service.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
@@ -15,6 +16,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     on<SelectCategoryEvent>(_onSelectCategoryEvent);
     on<FetchCategoryNewsEvent>(_onFetchCategoryNewsEvent);
     on<AddToFavoriteEvent>(_onAddToFavoriteEvent);
+    on<RemoveFavoriteNewsEvent>(_onRemoveFavoriteNewsEvent);
+    // Load favorites from Hive when Bloc starts
+    final box = Hive.box<NewsModel>('favoriteNewsBox');
+    final savedFavorites = box.values.toList();
+
+    emit(state.copyWith(favoriteNewsList: savedFavorites));
   }
 
   FutureOr<void> _onFetchAllNewsEvent(
@@ -78,10 +85,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     }
   }
 
-  FutureOr<void> _onAddToFavoriteEvent(
+  Future<void> _onAddToFavoriteEvent(
     AddToFavoriteEvent event,
     Emitter<NewsState> emit,
-  ) {
+  ) async {
+    final box = Hive.box<NewsModel>('favoriteNewsBox');
     emit(state.copyWith(favoriteNews: event.news));
     final news = state.favoriteNews;
     final FavoriteList = List<NewsModel>.from(state.favoriteNewsList);
@@ -93,12 +101,43 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
     if (!alreadyExists) {
       FavoriteList.add(event.news);
+      // Save to Hive and get the key
+      final key = await box.add(event.news);
+      //save the key inside the model
+      event.news.hiveKey = key;
 
       emit(
         state.copyWith(showToastFavorite: true, favoriteNewsList: FavoriteList),
       );
-    } else {
-      emit(state.copyWith(showToastFavorite: false));
     }
+    // else {
+    //   emit(state.copyWith(showToastFavorite: false));
+    // }
+  }
+
+  FutureOr<void> _onRemoveFavoriteNewsEvent(
+    RemoveFavoriteNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    final box = Hive.box<NewsModel>('favoriteNewsBox');
+    emit(state.copyWith(newsToRemove: event.newsToRemove));
+    final newsToRemove = event.newsToRemove;
+    final FavoriteList = List<NewsModel>.from(state.favoriteNewsList);
+
+    // removing from the list
+    FavoriteList.remove(newsToRemove);
+
+    //remove from the hive using hiveKey
+
+    if (newsToRemove?.hiveKey != null) {
+      await box.delete(newsToRemove!.hiveKey!);
+    }
+
+    emit(
+      state.copyWith(
+        showToastNewsDeletion: true,
+        favoriteNewsList: FavoriteList,
+      ),
+    );
   }
 }

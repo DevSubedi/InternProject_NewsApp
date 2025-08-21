@@ -26,3 +26,8 @@ class AddToFavoriteEvent extends NewsEvent {
 }
 
 class ShowFavoriteNewsEvent extends NewsEvent {}
+
+class RemoveFavoriteNewsEvent extends NewsEvent {
+  final NewsModel? newsToRemove;
+  RemoveFavoriteNewsEvent({required this.newsToRemove});
+}

@@ -7,6 +7,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:news_app/core/routing/app_router.dart';
 import 'package:news_app/features/auth/presentation/login/screens/login_screen.dart';
 import 'package:news_app/core/di/service_locator.dart';
+import 'package:news_app/features/home/data/models/news_model.dart';
 import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
 import 'package:news_app/features/localization/presentation/bloc/localization_bloc.dart';
 import 'package:news_app/l10n/app_localizations.dart';
@@ -14,8 +15,16 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //hive part
   await Hive.initFlutter();
+  //for rememberme in login
   var box = await Hive.openBox('authBox');
+  // Register Adapter for favorite news
+  Hive.registerAdapter(NewsModelAdapter());
+  // Open Box for favorite news
+  await Hive.openBox<NewsModel>('favoriteNewsBox');
+
   setupLocator();
   await Firebase.initializeApp();
 
@@ -61,6 +70,7 @@ class MyApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
+            debugShowCheckedModeBanner: false,
           ),
         );
       },

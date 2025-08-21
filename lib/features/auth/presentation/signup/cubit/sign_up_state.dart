@@ -30,7 +30,7 @@ class SignupState extends Equatable {
     this.passwordStatus = '',
     this.phone = '',
     this.phoneStatus = '',
-    this.gender = 'Male',
+    this.gender = 'male',
     this.age = '',
     this.ageStatus = '',
     this.statusMessage = '',
@@ -71,18 +71,18 @@ class SignupState extends Equatable {
 
   @override
   List<Object?> get props => [
-        name,
-        nameStatus,
-        email,
-        emailStatus,
-        password,
-        passwordStatus,
-        phone,
-        phoneStatus,
-        gender,
-        age,
-        ageStatus,
-        statusMessage,
-        signupStatus,
-      ];
+    name,
+    nameStatus,
+    email,
+    emailStatus,
+    password,
+    passwordStatus,
+    phone,
+    phoneStatus,
+    gender,
+    age,
+    ageStatus,
+    statusMessage,
+    signupStatus,
+  ];
 }

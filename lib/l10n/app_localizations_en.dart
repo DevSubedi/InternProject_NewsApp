@@ -127,4 +127,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get email => 'Email';
+
+  @override
+  String get myProfile => 'My Profile';
+
+  @override
+  String get nepali => 'Nepali';
+
+  @override
+  String get news => 'News';
+
+  @override
+  String get favorite => 'Favorite';
+
+  @override
+  String get detailedNews => 'Detailed News';
+
+  @override
+  String get buttonText1 => 'Add To Favorite';
+
+  @override
+  String get searchTextField => 'Enter the news to search';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get rememberMe => 'Remember me';
 }
