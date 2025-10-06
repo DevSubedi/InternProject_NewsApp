@@ -24,17 +24,17 @@ class CategoryTabWidget extends StatelessWidget {
         return BlocBuilder<NewsBloc, NewsState>(
           builder: (context, state) {
             if (state.categoryStatus == DataStatus.loading &&
-                state.selectedCategory?.toLowerCase() == c.toLowerCase()) {
+                state.selectedCategory.toLowerCase() == c.toLowerCase()) {
               return const Center(child: CircularProgressIndicator());
             }
 
             if (state.categoryStatus == DataStatus.error &&
-                state.selectedCategory?.toLowerCase() == c.toLowerCase()) {
+                state.selectedCategory.toLowerCase() == c.toLowerCase()) {
               return Center(child: Text(state.message ?? 'Error'));
             }
 
             if (state.categoryNews.isEmpty &&
-                state.selectedCategory?.toLowerCase() == c.toLowerCase()) {
+                state.selectedCategory.toLowerCase() == c.toLowerCase()) {
               return const Center(child: Text('No news found.'));
             }
 

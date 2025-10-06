@@ -7,6 +7,6 @@ class GetSearchTitleEvent extends SearchEvent {
   GetSearchTitleEvent({required this.searchTitle});
 }
 
-class PerformSearchEvent extends SearchEvent{
-  
-}
+class PerformSearchEvent extends SearchEvent {}
+
+class PerformPaginationEvent extends SearchEvent {}

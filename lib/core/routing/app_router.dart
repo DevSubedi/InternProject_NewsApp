@@ -16,6 +16,7 @@ import 'package:news_app/features/profile/presentation/screens/profile_screen.da
 import 'package:news_app/features/setting/presentation/screens/setting_screen.dart';
 
 GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
+
 final GoRouter appRouter = GoRouter(
   navigatorKey: navigationKey,
   initialLocation: Hive.box('authBox').get('isLoggedIn', defaultValue: false)

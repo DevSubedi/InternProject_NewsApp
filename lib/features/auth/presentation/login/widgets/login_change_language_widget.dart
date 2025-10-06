@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
-import 'package:news_app/features/localization/presentation/bloc/localization_bloc.dart';
+import 'package:news_app/core/localization/bloc/localization_bloc.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 
 class LoginChangeLanguageWidget extends StatelessWidget {

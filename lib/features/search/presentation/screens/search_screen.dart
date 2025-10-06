@@ -7,8 +7,37 @@ import 'package:news_app/features/home/presentation/widgets/news_card_widget.dar
 import 'package:news_app/features/search/presentation/bloc/search_bloc.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final state = context.read<SearchBloc>().state;
+    if (state.hasMore &&
+        state.status != SearchDataStatus.loading &&
+        _scrollController.position.pixels >=
+            _scrollController.position.maxScrollExtent - 300) {
+      context.read<SearchBloc>().add(PerformPaginationEvent());
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,20 +116,36 @@ class SearchScreen extends StatelessWidget {
             ),
             BlocBuilder<SearchBloc, SearchState>(
               builder: (context, state) {
-                if (state.status == SearchDataStatus.loading) {
+                if (state.status == SearchDataStatus.loading &&
+                    state.page == 1) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state.status == SearchDataStatus.loaded) {
                   return Expanded(
                     child: ListView.separated(
+                      controller: _scrollController,
                       itemBuilder: (context, index) {
-                        return NewsCardWidget(
-                          singleNews: state.resultNewsList[index],
-                        );
+                        if (index < state.resultNewsList.length) {
+                          final news = state.resultNewsList[index];
+                          return NewsCardWidget(
+                            singleNews: news,
+                          ); // your news item widget
+                        } else {
+                          // Show bottom loader when paginating
+                          return state.hasMore
+                              ? Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                )
+                              : const SizedBox.shrink();
+                        }
                       },
                       separatorBuilder: (c, i) {
                         return Divider();
                       },
-                      itemCount: state.resultNewsList.length,
+                      itemCount:
+                          state.resultNewsList.length + (state.hasMore ? 1 : 0),
                     ),
                   );
                 } else if (state.status == SearchDataStatus.error) {

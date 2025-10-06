@@ -17,9 +17,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     on<FetchCategoryNewsEvent>(_onFetchCategoryNewsEvent);
     on<AddToFavoriteEvent>(_onAddToFavoriteEvent);
     on<RemoveFavoriteNewsEvent>(_onRemoveFavoriteNewsEvent);
+
     // Load favorites from Hive when Bloc starts
     final box = Hive.box<NewsModel>('favoriteNewsBox');
-    final savedFavorites = box.values.toList();
+    final savedFavorites = box.keys.map((key) {
+      final news = box.get(key);
+      if (news != null) {
+        news.hiveKey =
+            key; // attach hiveKey so deletion works didn't get it though // period
+      }
+      return news!;
+    }).toList();
 
     emit(state.copyWith(favoriteNewsList: savedFavorites));
   }
@@ -44,7 +52,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   }
 
   FutureOr<void> _onSelectCategoryEvent(
-    SelectCategoryEvent event,
+      SelectCategoryEvent event,
     Emitter<NewsState> emit,
   ) {
     emit(
@@ -102,7 +110,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     if (!alreadyExists) {
       FavoriteList.add(event.news);
       // Save to Hive and get the key
-      final key = await box.add(event.news);
+      final key = await box.add(event.news );
       //save the key inside the model
       event.news.hiveKey = key;
 

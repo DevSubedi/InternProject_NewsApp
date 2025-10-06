@@ -5,10 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:news_app/core/di/injection.dart';
 
 import 'package:news_app/features/home/presentation/screens/favorite_screen.dart';
 import 'package:news_app/features/home/presentation/screens/home_screen.dart';
 import 'package:news_app/features/profile/presentation/screens/profile_screen.dart';
+import 'package:news_app/features/search/domain/repo/search_news_repo.dart';
 import 'package:news_app/features/search/presentation/bloc/search_bloc.dart';
 import 'package:news_app/features/search/presentation/screens/search_screen.dart';
 
@@ -35,7 +37,7 @@ class _HomeScreenState extends State<NewsPage> {
       HomeScreen(),
       FavoriteScreen(),
       BlocProvider(
-        create: (context) => SearchBloc()
+        create: (context) => SearchBloc(getIt<SearchNewsRepo>())
           ..add(GetSearchTitleEvent(searchTitle: 'Nepal'))
           ..add(PerformSearchEvent()),
         child: SearchScreen(),
