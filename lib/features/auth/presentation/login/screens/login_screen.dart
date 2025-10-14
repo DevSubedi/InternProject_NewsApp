@@ -12,7 +12,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10 = AppLocalizations.of(context);
-    final name = 'hello';
+    final name = 'Dev Subedi';
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
