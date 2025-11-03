@@ -11,6 +11,7 @@ import 'package:news_app/features/home/presentation/screens/favorite_screen.dart
 import 'package:news_app/features/home/presentation/screens/home_screen.dart';
 import 'package:news_app/features/home/presentation/screens/news_page.dart';
 import 'package:news_app/features/home/presentation/screens/trending_news_screen.dart';
+import 'package:news_app/features/home/presentation/screens/webview_screen.dart';
 import 'package:news_app/features/profile/presentation/screens/profile_screen.dart';
 
 import 'package:news_app/features/setting/presentation/screens/setting_screen.dart';
@@ -75,6 +76,14 @@ final GoRouter appRouter = GoRouter(
         final userId = currentUser?.uid;
 
         return ProfileScreen(userId: 'userId');
+      },
+    ),
+    GoRoute(
+      path: RoutePath.webview,
+      name: RouteName.webview,
+      builder: (context, state) {
+        final String url = state.extra as String;
+        return WebviewScreen(url: url);
       },
     ),
   ],

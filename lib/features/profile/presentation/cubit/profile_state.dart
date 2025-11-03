@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:news_app/features/profile/data/user_profile_model.dart';
 
 abstract class ProfileState {}

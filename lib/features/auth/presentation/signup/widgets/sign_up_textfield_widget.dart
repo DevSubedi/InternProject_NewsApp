@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
-import 'package:news_app/features/auth/presentation/signup/widgets/input_field_widget.dart';
 
 class SignUpTextfieldWidget extends StatelessWidget {
   final String title;

@@ -4,15 +4,13 @@ import 'package:news_app/features/auth/presentation/login/cubit/login_cubit.dart
 import 'package:news_app/features/auth/presentation/login/widgets/login_screen_part.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final l10 = AppLocalizations.of(context);
-    final name = 'hello';
+    
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

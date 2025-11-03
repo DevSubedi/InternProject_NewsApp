@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:news_app/common/widgets/show_toast_widget.dart';
 import 'package:news_app/core/routing/navigation_service.dart';
 import 'package:news_app/core/routing/route_name.dart';
@@ -82,7 +81,7 @@ class SignupCubit extends Cubit<SignupState> {
     } catch (e) {
       log("Unexpected error: $e");
 
-      ShowToastWidget.show('$e' ?? "Unexpected error occurred");
+      ShowToastWidget.show('$e');
 
       emit(state.copyWith(signupStatus: "error"));
     }

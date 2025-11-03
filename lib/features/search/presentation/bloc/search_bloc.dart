@@ -3,11 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import 'package:news_app/core/di/service_locator.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
-import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
 
-import 'package:news_app/features/search/data/search_api_service.dart';
 import 'package:news_app/features/search/domain/repo/search_news_repo.dart';
 
 part 'search_event.dart';

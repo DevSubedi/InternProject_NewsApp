@@ -24,13 +24,14 @@ class NewsModelAdapter extends TypeAdapter<NewsModel> {
       publishedAt: fields[4] as String?,
       content: fields[5] as String?,
       hiveKey: fields[6] as int?,
+      webUrl: fields[7] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, NewsModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.author)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class NewsModelAdapter extends TypeAdapter<NewsModel> {
       ..writeByte(5)
       ..write(obj.content)
       ..writeByte(6)
-      ..write(obj.hiveKey);
+      ..write(obj.hiveKey)
+      ..writeByte(7)
+      ..write(obj.webUrl);
   }
 
   @override
