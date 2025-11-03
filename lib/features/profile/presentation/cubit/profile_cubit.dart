@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:news_app/features/profile/data/user_profile_model.dart';
 import 'package:news_app/features/profile/presentation/cubit/profile_state.dart';
 

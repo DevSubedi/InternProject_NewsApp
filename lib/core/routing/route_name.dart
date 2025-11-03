@@ -8,6 +8,7 @@ class RouteName {
   static const favorite = 'favoriteScreen';
   static const trendingNews = 'trendingNewsScreen';
   static const profile = 'profile';
+  static const webview = 'webviewScreen';
 }
 
 class RoutePath {
@@ -21,4 +22,5 @@ class RoutePath {
   static const search = '/searchScreen';
   static const trendingNews = '/trendingNewsScreen';
   static const profile = '/profile';
+  static const webview = '/webviewScreen';
 }

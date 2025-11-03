@@ -29,6 +29,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       return news!;
     }).toList();
 
+    // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(favoriteNewsList: savedFavorites));
   }
 
@@ -76,7 +77,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       final api = sl<NewsApiService>();
       final selected = state.selectedCategory;
       final list = await api.categoryNewsService(
-        category: (selected == null || selected.toLowerCase() == 'all')
+        category: (selected.toLowerCase() == 'all')
             ? null
             : selected.toLowerCase(),
       );
@@ -99,23 +100,22 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     final box = Hive.box<NewsModel>('favoriteNewsBox');
     emit(state.copyWith(favoriteNews: event.news));
-    final news = state.favoriteNews;
-    final FavoriteList = List<NewsModel>.from(state.favoriteNewsList);
+    final favoriteList = List<NewsModel>.from(state.favoriteNewsList);
 
     // check if already exists
-    final alreadyExists = FavoriteList.any(
+    final alreadyExists = favoriteList.any(
       (news) => news.title == event.news.title,
     );
 
     if (!alreadyExists) {
-      FavoriteList.add(event.news);
+     favoriteList.add(event.news);
       // Save to Hive and get the key
       final key = await box.add(event.news );
       //save the key inside the model
       event.news.hiveKey = key;
 
       emit(
-        state.copyWith(showToastFavorite: true, favoriteNewsList: FavoriteList),
+        state.copyWith(showToastFavorite: true, favoriteNewsList: favoriteList),
       );
     }
     // else {
@@ -130,10 +130,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     final box = Hive.box<NewsModel>('favoriteNewsBox');
     emit(state.copyWith(newsToRemove: event.newsToRemove));
     final newsToRemove = event.newsToRemove;
-    final FavoriteList = List<NewsModel>.from(state.favoriteNewsList);
+    final favoriteList = List<NewsModel>.from(state.favoriteNewsList);
 
     // removing from the list
-    FavoriteList.remove(newsToRemove);
+    favoriteList.remove(newsToRemove);
 
     //remove from the hive using hiveKey
 
@@ -144,7 +144,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     emit(
       state.copyWith(
         showToastNewsDeletion: true,
-        favoriteNewsList: FavoriteList,
+        favoriteNewsList: favoriteList,
       ),
     );
   }

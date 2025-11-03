@@ -25,6 +25,9 @@ class NewsModel extends HiveObject {
   @HiveField(6)
   int? hiveKey; // this will store the key assigned by Hive
 
+  @HiveField(7)
+  final String? webUrl;
+
   NewsModel({
     this.author,
     this.title,
@@ -33,6 +36,7 @@ class NewsModel extends HiveObject {
     this.publishedAt,
     this.content,
     this.hiveKey,
+    this.webUrl,
   });
 
   factory NewsModel.fromJson(Map<String, dynamic> json) => NewsModel(
@@ -42,6 +46,7 @@ class NewsModel extends HiveObject {
     imageUrl: json['urlToImage'],
     publishedAt: json['publishedAt'],
     content: json['content'],
+    webUrl: json['url'],
   );
 
   Map<String, dynamic> toJson() => {
@@ -51,6 +56,7 @@ class NewsModel extends HiveObject {
     'urlToImage': imageUrl,
     'publishedAt': publishedAt,
     'content': content,
+    'url': webUrl,
   };
 
   static final emptyNewsModel = NewsModel(
@@ -60,6 +66,7 @@ class NewsModel extends HiveObject {
     imageUrl: '',
     publishedAt: '',
     content: '',
+    webUrl: '',
   );
 }
 

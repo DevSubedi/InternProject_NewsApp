@@ -14,7 +14,6 @@ import 'package:news_app/features/search/domain/repo/search_news_repo.dart';
 import 'package:news_app/features/search/presentation/bloc/search_bloc.dart';
 import 'package:news_app/features/search/presentation/screens/search_screen.dart';
 
-import 'package:news_app/features/setting/presentation/screens/setting_screen.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 
 class NewsPage extends StatefulWidget {

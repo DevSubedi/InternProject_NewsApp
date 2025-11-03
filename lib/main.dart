@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
@@ -14,6 +15,8 @@ import 'package:news_app/features/auth/presentation/login/screens/login_screen.d
 import 'package:news_app/features/home/data/models/news_model.dart';
 import 'package:news_app/features/home/presentation/bloc/news_bloc.dart';
 import 'package:news_app/l10n/app_localizations.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +29,12 @@ Future<void> main() async {
   Hive.registerAdapter(NewsModelAdapter());
   // Open Box for favorite news
   await Hive.openBox<NewsModel>('favoriteNewsBox');
+
+  // For Android webview initialization
+  WebViewPlatform.instance = AndroidWebViewPlatform();
+
+  //env files
+  await dotenv.load(fileName: '.env');
 
   setupLocator();
   configureDependencies();

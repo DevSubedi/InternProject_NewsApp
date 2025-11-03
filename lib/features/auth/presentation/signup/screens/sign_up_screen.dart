@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/routing/navigation_service.dart';
 import 'package:news_app/core/routing/route_name.dart';
-import 'package:news_app/features/auth/presentation/login/widgets/login_button_widget.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/auth/presentation/signup/cubit/sign_up_cubit.dart';
 import 'package:news_app/features/auth/presentation/signup/cubit/sign_up_state.dart';
@@ -88,7 +87,7 @@ class SignUpScreen extends StatelessWidget {
                         children: [
                           SignUpTextfieldWidget(title: l10.gender),
                           DropdownButtonFormField<String>(
-                            value: state.gender,
+                            initialValue: state.gender,
                             items: [
                               DropdownMenuItem(
                                 value: "male",

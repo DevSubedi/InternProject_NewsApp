@@ -16,7 +16,7 @@ class SearchNewsRepoImpl implements SearchNewsRepo {
     required String query,
     required int page,
   }) async {
-    String url = 'https://newsapi.org/v2/everything';
+    String url = 'https://newsapi.org/v2/top-headlines';
     try {
       final response = await dio.get(
         url,

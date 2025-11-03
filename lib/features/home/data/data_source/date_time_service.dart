@@ -1,6 +1,6 @@
 class DateTimeService {
   String dateParser(String time) {
-    if (time == null || time.isEmpty) {
+    if (time.isEmpty) {
       return "Unknown"; // fallback
     }
     final publishedDate = DateTime.parse(time);

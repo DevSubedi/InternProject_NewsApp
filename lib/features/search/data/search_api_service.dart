@@ -18,6 +18,14 @@ class SearchApiService {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final List<dynamic> searchedNews = response.data["articles"];
         final data = searchedNews.map((e) => NewsModel.fromJson(e)).toList();
+        // // sort manually (descending order)
+        // data.sort((a, b) {
+        //   final dateA =
+        //       DateTime.tryParse(a.publishedAt ?? '') ?? DateTime(1970);
+        //   final dateB =
+        //       DateTime.tryParse(b.publishedAt ?? '') ?? DateTime(1970);
+        //   return dateB.compareTo(dateA); // latest first
+        // });
         return data;
       }
     } catch (e) {

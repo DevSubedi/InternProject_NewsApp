@@ -16,6 +16,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> categoryNames = [
+      'All',
+      'technology',
+      'business',
+      'entertainment',
+      'general',
+      'health',
+      'science',
+    ];
     final l10 = AppLocalizations.of(context)!;
     return SafeArea(
       child: DefaultTabController(
@@ -72,15 +81,20 @@ class HomeScreen extends StatelessWidget {
               SliverPersistentHeader(
                 pinned: true,
                 delegate: _TextHeaderDelegate(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.h),
-                    child: Text(
-                      l10.latest,
-                      style: TextStyle(
-                        fontSize: 18.h,
-                        fontWeight: FontWeight.w600,
+                  child: Row(
+                    children: [
+                      SizedBox(width: 20),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.w),
+                        child: Text(
+                          l10.latest,
+                          style: TextStyle(
+                            fontSize: 18.h,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
@@ -111,6 +125,16 @@ class HomeScreen extends StatelessWidget {
                       Tab(text: l10.health),
                       Tab(text: l10.science),
                     ],
+
+                    onTap: (value) {
+                      final selectedCategory = categoryNames[value];
+
+                      context.read<NewsBloc>().add(
+                        SelectCategoryEvent(
+                          selectedCategoryEvent: selectedCategory,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
@@ -134,7 +158,8 @@ class _TextHeaderDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    final color = shrinkOffset > 0 ? Colors.white : Colors.transparent;
+    final color = Colors.white;
+    // final color = shrinkOffset > 0 ? Colors.white : Colors.transparent;
     return Container(
       color: color,
       alignment: Alignment.centerLeft,
@@ -162,7 +187,8 @@ class _TabBarDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    final color = shrinkOffset > 0 ? Colors.white : Colors.transparent;
+    final color = Colors.white;
+    // final color = shrinkOffset > 0 ? Colors.white : Colors.transparent;
     return Container(
       color: color, // background for pinned tab
       child: tabBar,
