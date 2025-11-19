@@ -21,39 +21,16 @@ The app supports **login/authentication via Firebase**, **offline favorites usin
 
 ## Screenshots
 
-<p align="center">
-  <figure>
-    <img src="assets/screenshots/home.jpg" width="200">
-    <figcaption>Home Screen - Top headlines</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/screenshots/login.jpg" width="200">
-    <figcaption>Login Screen - Firebase Authentication</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/screenshots/detailedScreen.jpg" width="200">
-    <figcaption>Article Details Screen</figcaption>
-  </figure>
-</p>
+| Login Screen | Home Screen | Article Details |
+|-------------|--------------|----------------|
+|  ![Login](assets/screenshots/login.jpg) | ![Home](assets/screenshots/home.jpg) | ![Details](assets/screenshots/detailedScreen.jpg) |
+| Firebase Authentication | Top headlines | Article Details Screen |
 
-<p align="center">
-  <figure>
-    <img src="assets/screenshots/aiSummary.jpg" width="200">
-    <figcaption>AI Summary using Gemini AI</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/screenshots/favoriteScreen.jpg" width="200">
-    <figcaption>Favorite Articles - Saved offline with Hive</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/screenshots/searchScreen.jpg" width="200">
-    <figcaption>Search News Articles</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/screenshots/webView.jpg" width="200">
-    <figcaption>WebView - Read full articles</figcaption>
-  </figure>
-</p>
+| AI Summary | Favorite Articles | Search News | WebView |
+|------------|-----------------|-------------|---------|
+| ![AI Summary](assets/screenshots/aiSummary.jpg) | ![Favorites](assets/screenshots/favoriteScreen.jpg) | ![Search](assets/screenshots/searchScreen.jpg) | ![WebView](assets/screenshots/webView.jpg) |
+| AI-powered summary | Saved offline with Hive | Search articles | Read full articles |
+
 
 
 ## Getting Started
