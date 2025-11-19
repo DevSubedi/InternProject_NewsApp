@@ -23,6 +23,7 @@ class FavoriteScreen extends StatelessWidget {
         listener: (context, state) {
           if (state.showToastNewsDeletion) {
             ShowToastWidget.show('News Sucessfully deleted');
+            // ignore: invalid_use_of_visible_for_testing_member
             context.read<NewsBloc>().emit(
               state.copyWith(showToastNewsDeletion: false),
             );

@@ -9,10 +9,10 @@ import 'package:news_app/features/auth/presentation/login/cubit/login_cubit.dart
 import 'package:news_app/features/auth/presentation/login/cubit/login_state.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/login_button_widget.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/login_change_language_widget.dart';
-import 'package:news_app/features/auth/presentation/login/widgets/login_checkBox_widget.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/login_check_box_widget.dart';
 
 import 'package:news_app/features/auth/presentation/login/widgets/login_button_with_icon.dart';
-import 'package:news_app/features/auth/presentation/login/widgets/login_textField.dart';
+import 'package:news_app/features/auth/presentation/login/widgets/login_text_field.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 
 import 'package:news_app/l10n/app_localizations.dart';

@@ -5,8 +5,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/di/service_locator.dart';
-import 'package:news_app/core/routing/navigation_service.dart';
-import 'package:news_app/core/routing/route_name.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/data/data_source/date_time_service.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
@@ -27,24 +25,27 @@ class NewsCardWidget extends StatelessWidget {
         width: 400.w,
         child: Row(
           children: [
-            Container(
-              height: 100,
-              width: 100,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.h),
-              ),
-              child: Image.network(
-                singleNews.imageUrl?.isNotEmpty == true
-                    ? singleNews.imageUrl!
-                    : 'https://via.placeholder.com/150',
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Image.asset(
-                    'assets/image-load-failed.png',
-                    fit: BoxFit.cover,
-                  );
-                },
+            Hero(
+              tag: 'newsImage_${singleNews.imageUrl}',
+              child: Container(
+                height: 100,
+                width: 100,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.h),
+                ),
+                child: Image.network(
+                  singleNews.imageUrl?.isNotEmpty == true
+                      ? singleNews.imageUrl!
+                      : 'https://via.placeholder.com/150',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      'assets/image-load-failed.png',
+                      fit: BoxFit.cover,
+                    );
+                  },
+                ),
               ),
             ),
 
@@ -115,7 +116,26 @@ class NewsCardWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        NavigationService.pushNamed(RouteName.detailScreen, extra: singleNews);
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+            transitionDuration: Duration(milliseconds: 700), // slower
+            reverseTransitionDuration: Duration(milliseconds: 700),
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                DetailNewsScreen(news: singleNews),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+          ),
+        );
+
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (_) => DetailNewsScreen(news: singleNews)),
+        // );
+
+        // NavigationService.pushNamed(RouteName.detailScreen, extra: singleNews);
       },
     );
   }

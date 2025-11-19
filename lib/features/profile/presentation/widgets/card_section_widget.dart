@@ -8,13 +8,13 @@ class CardSection extends StatelessWidget {
   final Function(List<String>)? onEditList;
 
   const CardSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.values,
     this.editable = true,
     this.onEdit,
     this.onEditList,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

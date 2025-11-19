@@ -28,7 +28,7 @@ class CategoryTabWidget extends StatelessWidget {
 
             if (state.categoryStatus == DataStatus.error &&
                 state.selectedCategory.toLowerCase() == c.toLowerCase()) {
-              return Center(child: Text(state.message ?? 'Error'));
+              return Center(child: Text(state.message));
             }
 
             if (state.categoryNews.isEmpty &&

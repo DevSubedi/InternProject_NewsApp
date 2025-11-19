@@ -16,7 +16,7 @@ class SearchNewsRepoImpl implements SearchNewsRepo {
     required String query,
     required int page,
   }) async {
-    String url = 'https://newsapi.org/v2/top-headlines';
+    String url = 'https://newsapi.org/v2/everything';
     try {
       final response = await dio.get(
         url,
@@ -24,6 +24,7 @@ class SearchNewsRepoImpl implements SearchNewsRepo {
           'q': query,
           'page': page,
           'pageSize': 10,
+          // 'sortBy': 'publishedAt',
           'apiKey': 'df767b84fbbe46f5b25e66b6eb533029',
         },
       );

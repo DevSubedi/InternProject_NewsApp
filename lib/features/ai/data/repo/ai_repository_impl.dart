@@ -14,7 +14,7 @@ class AiRepositoryImpl implements AiRepository {
   @override
   Future getNewsContent({required String url}) async {
     try {
-      ;
+      
       final response = await dio.get(url);
       if (response.statusCode == 200) {
         final document = parse(response.data);

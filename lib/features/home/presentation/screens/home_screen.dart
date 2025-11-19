@@ -81,20 +81,15 @@ class HomeScreen extends StatelessWidget {
               SliverPersistentHeader(
                 pinned: true,
                 delegate: _TextHeaderDelegate(
-                  child: Row(
-                    children: [
-                      SizedBox(width: 20),
-                      Padding(
-                        padding: EdgeInsets.only(left: 20.w),
-                        child: Text(
-                          l10.latest,
-                          style: TextStyle(
-                            fontSize: 18.h,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20.w),
+                    child: Text(
+                      l10.latest,
+                      style: TextStyle(
+                        fontSize: 18.h,
+                        fontWeight: FontWeight.w600,
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),

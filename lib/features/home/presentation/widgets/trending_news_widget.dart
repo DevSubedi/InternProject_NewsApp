@@ -5,6 +5,7 @@ import 'package:news_app/core/routing/navigation_service.dart';
 import 'package:news_app/core/routing/route_name.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/data/models/news_model.dart';
+import 'package:news_app/features/home/presentation/screens/detail_news_screen.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 
 class TrendingNewsWidget extends StatelessWidget {
@@ -23,17 +24,20 @@ class TrendingNewsWidget extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.w),
 
-                child: Image.network(
-                  urlImage.isNotEmpty == true
-                      ? urlImage
-                      : 'https://via.placeholder.com/150',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Image.asset(
-                      'assets/image-load-failed.png',
-                      fit: BoxFit.contain,
-                    );
-                  },
+                child: Hero(
+                  tag: 'newsImage_$urlImage',
+                  child: Image.network(
+                    urlImage.isNotEmpty == true
+                        ? urlImage
+                        : 'https://via.placeholder.com/150',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        'assets/image-load-failed.png',
+                        fit: BoxFit.contain,
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
@@ -96,10 +100,28 @@ class TrendingNewsWidget extends StatelessWidget {
             return InkWell(
               child: buildImage(image, index, title),
               onTap: () {
-                NavigationService.pushNamed(
-                  RouteName.detailScreen,
-                  extra: newsList[index],
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    transitionDuration: Duration(milliseconds: 700), // slower
+                    reverseTransitionDuration: Duration(milliseconds: 700),
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        DetailNewsScreen(news: newsList[index]),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                  ),
                 );
+
+                // before it was like this before the hero animation implemented.
+                // NavigationService.pushNamed(
+                //   RouteName.detailScreen,
+                //   extra: newsList[index],
+                // );
               },
             );
           },

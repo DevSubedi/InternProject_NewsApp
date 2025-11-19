@@ -7,12 +7,12 @@ class EditableField extends StatelessWidget {
   final Function(String value)? onEdit;
 
   const EditableField({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
     this.editable = true,
     this.onEdit,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

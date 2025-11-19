@@ -32,7 +32,7 @@ class _HomeScreenState extends State<NewsPage> {
     final currentUser = FirebaseAuth.instance.currentUser;
     final userId = currentUser?.uid;
 
-    final List<Widget> _pages = [
+    final List<Widget> pages = [
       HomeScreen(),
       FavoriteScreen(),
       BlocProvider(
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<NewsPage> {
       ProfileScreen(userId: userId ?? ''),
     ];
     return Scaffold(
-      body: IndexedStack(index: _selectedIndex, children: _pages),
+      body: IndexedStack(index: _selectedIndex, children: pages),
       bottomNavigationBar: Container(
         color: Colors.black,
         child: Padding(

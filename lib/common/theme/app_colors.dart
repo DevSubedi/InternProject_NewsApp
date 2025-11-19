@@ -12,6 +12,6 @@ class AppColors {
   );
   static final ColorModel textColor2 = ColorModel(
     lightModeColor: const Color(0xFF4E4B63),
-    darkModeColor: const Color(0xFFB03B4),
+    darkModeColor: const Color(0xFF0B03B4),
   );
 }

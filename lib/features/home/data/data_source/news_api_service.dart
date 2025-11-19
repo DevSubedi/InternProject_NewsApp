@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 
 import 'package:news_app/features/home/data/models/news_model.dart';
@@ -22,6 +24,7 @@ class NewsApiService {
         return data;
       }
     } catch (e) {
+      // ignore: avoid_print
       print('Error during the fetching the data: $e ');
     }
     return [];
@@ -61,7 +64,7 @@ class NewsApiService {
         );
       }
     } catch (e) {
-      print('Error during the fetching the category-wise list: $e');
+      log('Error during the fetching the category-wise list: $e');
       return [];
     }
   }

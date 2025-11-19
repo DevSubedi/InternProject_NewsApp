@@ -73,6 +73,7 @@ final GoRouter appRouter = GoRouter(
       name: RouteName.profile,
       builder: (context, state) {
         final currentUser = FirebaseAuth.instance.currentUser;
+        // ignore: unused_local_variable
         final userId = currentUser?.uid;
 
         return ProfileScreen(userId: 'userId');

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_init_to_null
+
 part of 'news_bloc.dart';
 
 enum DataStatus { intial, loading, loaded, error }
@@ -65,7 +67,7 @@ class NewsState extends Equatable {
   }
 
   @override
-  // TODO: implement props
+
   List<Object?> get props => [
     allNews,
     individualNews,

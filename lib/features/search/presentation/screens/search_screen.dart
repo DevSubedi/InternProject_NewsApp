@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:news_app/features/auth/presentation/login/widgets/text_widget.dart';
 import 'package:news_app/features/home/presentation/widgets/news_card_widget.dart';
 import 'package:news_app/features/search/presentation/bloc/search_bloc.dart';
+import 'package:news_app/features/search/presentation/widgets/animated_list_item.dart';
 import 'package:news_app/l10n/app_localizations.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -126,8 +127,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       itemBuilder: (context, index) {
                         if (index < state.resultNewsList.length) {
                           final news = state.resultNewsList[index];
-                          return NewsCardWidget(
-                            singleNews: news,
+                          return AnimatedListItem(
+                            child: NewsCardWidget(singleNews: news),
                           ); // your news item widget
                         } else {
                           // Show bottom loader when paginating

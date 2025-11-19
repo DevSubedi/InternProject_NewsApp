@@ -125,6 +125,8 @@ class DetailNewsScreen extends StatelessWidget {
             listener: (context, state) {
               if (state.showToastFavorite) {
                 ShowToastWidget.show('News Added to Favorite');
+
+                // ignore: invalid_use_of_visible_for_testing_member
                 context.read<NewsBloc>().emit(
                   state.copyWith(showToastFavorite: false),
                 );
@@ -135,21 +137,24 @@ class DetailNewsScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text('"${news.title}"', style: TextStyle(fontSize: 24.h)),
-                SizedBox(
-                  height: 248.h,
-                  width: 400.w,
+                Hero(
+                  tag: 'newsImage_${news.imageUrl}',
+                  child: SizedBox(
+                    height: 248.h,
+                    width: 400.w,
 
-                  child: Image.network(
-                    news.imageUrl?.isNotEmpty == true
-                        ? news.imageUrl!
-                        : 'https://via.placeholder.com/150',
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Image.asset(
-                        'assets/image-load-failed.png',
-                        fit: BoxFit.contain,
-                      );
-                    },
+                    child: Image.network(
+                      news.imageUrl?.isNotEmpty == true
+                          ? news.imageUrl!
+                          : 'https://via.placeholder.com/150',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          'assets/image-load-failed.png',
+                          fit: BoxFit.contain,
+                        );
+                      },
+                    ),
                   ),
                 ),
                 8.verticalSpace,

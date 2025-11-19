@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 
 import 'package:news_app/features/home/data/models/news_model.dart';
@@ -29,7 +31,7 @@ class SearchApiService {
         return data;
       }
     } catch (e) {
-      print('Error during the fetching the data: $e');
+      log('Error during the fetching the data: $e');
     }
     return [];
   }
